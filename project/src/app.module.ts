@@ -2,6 +2,8 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { User } from './user/user.model';
+import { Fitness } from './fitness/fitness.model';
+import { FitnessModule } from './fitness/fitness.module';
 import { Trainer } from './trainer/trainer.model';
 import { UserModule } from './user/user.module';
 import { TrainerModule } from './trainer/trainer.module';
@@ -15,15 +17,17 @@ import { GymsReviewsModule } from './gyms-reviews/gyms-reviews.module';
       dialect: 'postgres',
       host: 'localhost',
       port: 5432,
-      username: 'admin',
+      username: 'postgres',
       password: '123',
       database: 'fitne',
       autoLoadModels: true,
-      synchronize: true, // Только для dev
-      models: [User, Trainer],
+      synchronize: false,
+      models: [User, Fitness, Trainer],
+      logging: false,
     }),
 
     UserModule,
+    FitnessModule,
     TrainerModule,
     AuthModule,
     GymsModule,
