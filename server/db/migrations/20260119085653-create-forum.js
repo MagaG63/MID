@@ -16,10 +16,10 @@ module.exports = {
         type: Sequelize.TEXT
       },
       author_id: {
-        type: Sequelize.NUMBER
+        type: Sequelize.INTEGER
       },
       likes: {
-        type: Sequelize.NUMBER
+        type: Sequelize.INTEGER
       },
       comments: {
         type: Sequelize.STRING

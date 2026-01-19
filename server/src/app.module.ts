@@ -17,7 +17,7 @@ import { GymsReviewsModule } from './gyms-reviews/gyms-reviews.module';
       dialect: 'postgres',
       host: 'localhost',
       port: 5432,
-      username: 'postgres',
+      username: 'admin',
       password: '123',
       database: 'fitne',
       autoLoadModels: true,

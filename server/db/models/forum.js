@@ -16,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   Forum.init({
     title: DataTypes.STRING,
     description: DataTypes.TEXT,
-    author_id: DataTypes.NUMBER,
-    likes: DataTypes.NUMBER,
+    author_id: DataTypes.INTEGER,
+    likes: DataTypes.INTEGER,
     comments: DataTypes.STRING
   }, {
     sequelize,
