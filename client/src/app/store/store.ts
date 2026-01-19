@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import fitnessReducer from '@/entities/fitnessClubs/model/fitness.Slice';
+import foodDiaryReducer from '@/entities/food-diary/model/foodDiary.Slice';
 
 export const store = configureStore({
-  reducer: { fitness: fitnessReducer },
+  reducer: { 
+    fitness: fitnessReducer,
+    foodDiary: foodDiaryReducer,
+  },
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

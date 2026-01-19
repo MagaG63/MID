@@ -1,0 +1,138 @@
+/* Component Styles - Perplexity.ai Dark Theme */
+
+.rooms-page {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.rooms-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #e5e5e5;
+  margin-bottom: 2rem;
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.rooms-grid-item {
+  transition: transform 0.3s ease !important;
+}
+
+.rooms-grid-item:hover {
+  transform: translateY(-4px);
+}
+
+.devices-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.device-card {
+  background: rgba(45, 45, 45, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.device-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.device-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.device-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.device-title {
+  font-weight: 600;
+  color: #e5e5e5;
+  margin: 0;
+}
+
+.device-toggle {
+  text-align: center;
+}
+
+/* Bootstrap overrides for dark theme */
+.alert {
+  background-color: #2d2d2d;
+  border-color: #3a3a3a;
+  color: #e5e5e5;
+}
+
+.alert-warning {
+  background-color: #3d3520;
+  border-color: #5d5530;
+  color: #f5d590;
+}
+
+.alert-success {
+  background-color: #2d3d2d;
+  border-color: #3d5d3d;
+  color: #5dd39e;
+}
+
+.alert-danger {
+  background-color: #3d2d2d;
+  border-color: #5d4d4d;
+  color: #e5a5a5;
+}
+
+.text-muted {
+  color: #a0a0a0 !important;
+}
+
+.text-success {
+  color: #5dd39e !important;
+}
+
+/* Fix Bootstrap container padding */
+.container-fluid {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Fix row negative margins */
+.row {
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+}
+
+.row > * {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .rooms-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .devices-list {
+    grid-template-columns: 1fr;
+  }
+}

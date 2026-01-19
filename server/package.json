@@ -18,7 +18,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "db": "sequelize db:drop && sequelize db:create && sequelize db:migrate && sequelize db:seed:all"
+    "db": "rm -f ./database.sqlite && sequelize db:migrate && sequelize db:seed:all",
+    "db:win": "del /f database.sqlite 2>nul & sequelize db:migrate && sequelize db:seed:all"
   },
   "dependencies": {
     "@nestjs/common": "^11.1.12",
@@ -36,12 +37,11 @@
     "jsonwebtoken": "^9.0.3",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
-    "pg": "^8.17.1",
-    "pg-hstore": "^2.3.4",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2",
     "sequelize": "^6.37.7",
-    "sequelize-typescript": "^2.1.6"
+    "sequelize-typescript": "^2.1.6",
+    "sqlite3": "^5.1.7"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",

@@ -17,7 +17,7 @@ module.exports = {
     {
       name: 'DDX Fitness',
       contact: '+7 (495) 777-11-22',
-      price: 1900-2999,
+      price: '1900-2999',
       desc: 'Сетевой фитнес-клуб DDX с современными тренажерами, групповыми занятиями и зонами для кардио. Удобное расписание, опытные инструкторы.',
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -25,7 +25,7 @@ module.exports = {
     {
       name: 'World Class',
       contact: '+7 (495) 937-77-77',
-      price: 3600-14200,
+      price: '3600-14200',
       desc: 'Премиум фитнес-клуб с бассейном, SPA, групповыми программами и просторным тренажерным залом. Высокий уровень сервиса.',
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -33,7 +33,7 @@ module.exports = {
     {
       name: 'X-Fit',
       contact: '+7 (495) 645-44-55',
-      price: 2000-9200,
+      price: '2000-9200',
       desc: 'Популярная сеть X-Fit с разнообразными групповыми занятиями, функциональным тренингом и качественным оборудованием.',
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -42,7 +42,7 @@ module.exports = {
      {
       name: 'Spirit-fitness',
       contact: '+7 (495) 645-44-55',
-      price: 1700-3000,
+      price: '1700-3000',
       desc: 'Популярная сеть X-Fit с разнообразными групповыми занятиями, функциональным тренингом и качественным оборудованием.',
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -230,10 +230,12 @@ module.exports = {
         name: 'Алексей Тренер',
         description: 'Сертифицированный тренер по фитнесу с 10-летним опытом',
         profileImage: '/uploads/trainers/alexey.jpg',
-        qualificationImages: [
+        qualificationImages: JSON.stringify([
           '/uploads/qualifications/alexey-cert1.jpg',
           '/uploads/qualifications/alexey-cert2.jpg',
-        ],
+        ]),
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         email: 'maria@fitness.com',
@@ -241,7 +243,9 @@ module.exports = {
         name: 'Мария Козлова',
         description: 'Мастер спорта по бодибилдингу',
         profileImage: '/uploads/trainers/maria.jpg',
-        qualificationImages: ['/uploads/qualifications/maria-gold.jpg'],
+        qualificationImages: JSON.stringify(['/uploads/qualifications/maria-gold.jpg']),
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
     ];
     await queryInterface.bulkInsert('Trainers', trainers, {});

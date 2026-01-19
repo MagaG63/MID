@@ -2,6 +2,7 @@ import { BrowserRouter } from 'react-router';
 import { createRoot } from 'react-dom/client';
 import App from './app/App';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '@/shared/styles/main.css';
 import { Provider } from 'react-redux';
 import { store } from './app/store/store';
 
