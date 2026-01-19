@@ -16,11 +16,11 @@ export class FitnessService {
     return fitness;
   }
 
-//   // Если понадобится получить один клуб по ID
-//   async getOne(id: number): Promise<Fitness> {
-//     const fitness = await this.fitnessModel.findByPk(id);
-//     return fitness;
-//   }
+  //   // Если понадобится получить один клуб по ID
+  //   async getOne(id: number): Promise<Fitness> {
+  //     const fitness = await this.fitnessModel.findByPk(id);
+  //     return fitness;
+  //   }
 
   // Если понадобится создать клуб
   // async create(dto: CreateFitnessDto): Promise<Fitness> {

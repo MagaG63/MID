@@ -25,6 +25,85 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Database Configuration
+
+This project uses **SQLite3** as the database for development and testing. SQLite3 is a lightweight, file-based database that doesn't require a separate server process.
+
+### Environment Variables
+
+Create a `.env` file in the server root directory with the following variable:
+
+```env
+DB_STORAGE=./database.sqlite
+```
+
+- `DB_STORAGE`: Path to the SQLite database file (default: `./database.sqlite`)
+
+### Database Setup
+
+The database file will be created automatically when you run migrations. To set up the database:
+
+```bash
+# Install dependencies
+$ npm install
+
+# Run migrations and seeds (creates database file)
+$ npm run db
+
+# For Windows users
+$ npm run db:win
+```
+
+### Database Scripts
+
+- `npm run db` - Recreates the database from scratch (Unix/Mac)
+- `npm run db:win` - Recreates the database from scratch (Windows)
+
+This script will:
+1. Delete the existing database file
+2. Run all migrations to create tables
+3. Run all seeds to populate test data
+
+### Migration Commands
+
+```bash
+# Run pending migrations
+$ npx sequelize db:migrate
+
+# Undo last migration
+$ npx sequelize db:migrate:undo
+
+# Run seeds
+$ npx sequelize db:seed:all
+```
+
+### PostgreSQL vs SQLite3
+
+This project was migrated from PostgreSQL to SQLite3. Key differences:
+
+| Feature | PostgreSQL | SQLite3 |
+|---------|-----------|---------|
+| **Setup** | Requires server installation | File-based, no server needed |
+| **ARRAY type** | Native support | Stored as JSON strings |
+| **Date functions** | `NOW()` | `CURRENT_TIMESTAMP` |
+| **Connection** | Network (host, port, credentials) | File path |
+| **Use case** | Production, multi-user | Development, testing, small apps |
+
+**Note:** Array fields (like `Trainer.qualificationImages`) are automatically serialized to JSON strings in the database and deserialized to arrays in the application code.
+
+### Troubleshooting
+
+**Error: "SQLITE_ERROR: no such table"**
+- Run `npm run db` to create all tables
+
+**Error: "database is locked"**
+- Close all connections to the database
+- Restart the application
+
+**Error: "ENOENT: no such file or directory"**
+- Check that `DB_STORAGE` path in `.env` is correct
+- Ensure the directory exists (SQLite will create the file, but not the directory)
+
 ## Project setup
 
 ```bash

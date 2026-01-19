@@ -1,0 +1,109 @@
+/* FoodDiaryList - Perplexity.ai Dark Theme */
+
+.diaryList {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.emptyState {
+  padding: 2rem;
+  text-align: center;
+}
+
+.emptyState p {
+  color: #a0a0a0;
+}
+
+.totalBadge {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #20808d;
+  color: #ffffff;
+}
+
+.entriesList {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.entriesList::-webkit-scrollbar {
+  width: 8px;
+}
+
+.entriesList::-webkit-scrollbar-track {
+  background: #252525;
+  border-radius: 4px;
+}
+
+.entriesList::-webkit-scrollbar-thumb {
+  background: #20808d;
+  border-radius: 4px;
+}
+
+.entryCard {
+  border: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  background: rgba(45, 45, 45, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.entryCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.entryImage {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.foodName {
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+  color: #e5e5e5;
+}
+
+.entryDetails {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+.entryDetails span {
+  color: #a0a0a0;
+}
+
+.caloriesInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+}
+
+.caloriesInfo strong {
+  font-size: 1.2rem;
+  color: #20808d;
+}
+
+.caloriesInfo small {
+  color: #a0a0a0;
+}
+
+@media (max-width: 576px) {
+  .entryImage {
+    width: 60px;
+    height: 60px;
+  }
+
+  .entryDetails {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}

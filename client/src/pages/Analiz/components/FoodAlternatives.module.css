@@ -1,0 +1,57 @@
+/* FoodAlternatives - n8n Style */
+
+.alternatives {
+  background: rgba(45, 45, 45, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.alternativesTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #e5e5e5;
+  margin-bottom: 0.75rem;
+}
+
+.alternativesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.alternativeButton {
+  background: rgba(37, 37, 37, 0.6);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e5e5e5;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.alternativeButton:hover {
+  background: rgba(32, 128, 141, 0.8);
+  border-color: rgba(32, 128, 141, 1);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(32, 128, 141, 0.3);
+}
+
+.confidence {
+  font-size: 0.75rem;
+  color: #a0a0a0;
+  background: #1a1a1a;
+  padding: 0.125rem 0.375rem;
+  border-radius: 4px;
+}
+
+.alternativeButton:hover .confidence {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.2);
+}

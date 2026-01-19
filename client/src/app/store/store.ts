@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import fitnessReducer from '@/entities/fitnessClubs/model/fitness.Slice';
+import trainerReducer from '@/entities/trainer/model/trainer.slice'
+import userReducer from '@/entities/user/model/user.slice';
+import forumsReducer from '@/entities/forum/model/forum.slice';
+import foodDiaryReducer from '@/entities/food-diary/model/foodDiary.Slice'
 
 export const store = configureStore({
-  reducer: { fitness: fitnessReducer },
+  reducer: { fitness: fitnessReducer,   trainer: trainerReducer,  user: userReducer,  forums: forumsReducer, foodDiary: foodDiaryReducer}
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

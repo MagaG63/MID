@@ -37,8 +37,18 @@ export class Trainer extends Model<Trainer, TrainerCreationAttributes> {
   @Column({ type: DataType.STRING, allowNull: false })
   declare profileImage: string;
 
-  @Column({ type: DataType.ARRAY(DataType.STRING), allowNull: false })
-  @Default([])
+  @Column({
+    type: DataType.TEXT,
+    allowNull: false,
+    get() {
+      const rawValue = this.getDataValue('qualificationImages');
+      return rawValue ? JSON.parse(rawValue as string) : [];
+    },
+    set(value: string[]) {
+      this.setDataValue('qualificationImages', JSON.stringify(value) as any);
+    },
+  })
+  @Default('[]')
   declare qualificationImages: string[];
 
   // Один тренер может оставить много отзывов о разных залах

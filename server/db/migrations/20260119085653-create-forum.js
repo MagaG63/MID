@@ -16,10 +16,10 @@ module.exports = {
         type: Sequelize.TEXT,
       },
       author_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
       likes: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER
       },
       comments: {
         type: Sequelize.STRING,
@@ -27,10 +27,12 @@ module.exports = {
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
     });
   },

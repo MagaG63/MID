@@ -17,7 +17,7 @@ module.exports = {
     {
       name: 'DDX Fitness',
       contact: '+7 (495) 777-11-22',
-      price: 1900-2999,
+      price: '1900-2999',
       desc: 'Сетевой фитнес-клуб DDX с современными тренажерами, групповыми занятиями и зонами для кардио. Удобное расписание, опытные инструкторы.',
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -25,7 +25,7 @@ module.exports = {
     {
       name: 'World Class',
       contact: '+7 (495) 937-77-77',
-      price: 3600-14200,
+      price: '3600-14200',
       desc: 'Премиум фитнес-клуб с бассейном, SPA, групповыми программами и просторным тренажерным залом. Высокий уровень сервиса.',
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -33,7 +33,7 @@ module.exports = {
     {
       name: 'X-Fit',
       contact: '+7 (495) 645-44-55',
-      price: 2000-9200,
+      price: '2000-9200',
       desc: 'Популярная сеть X-Fit с разнообразными групповыми занятиями, функциональным тренингом и качественным оборудованием.',
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -42,14 +42,12 @@ module.exports = {
      {
       name: 'Spirit-fitness',
       contact: '+7 (495) 645-44-55',
-      price: 1700-3000,
-      desc: 'Популярная сеть X-Fit с разнообразными групповыми занятиями, функциональным тренингом и качественным оборудованием.',
+      price: '1700-3000',
+      desc: 'Популярная сеть Spirit-fitness с разнообразными групповыми занятиями, функциональным тренингом и качественным оборудованием.',
       createdAt: new Date(),
       updatedAt: new Date(),
-    }
-  ]);
-
-
+    },
+    ]);
 
     const users = [
       {
@@ -80,6 +78,64 @@ module.exports = {
     ];
 
     await queryInterface.bulkInsert('Users', users, {});
+
+    await queryInterface.bulkInsert('Forums', [
+      {
+        id: 1,
+        title: 'Изучение React',
+        description:
+          'Обсуждаем лучшие практики и подходы к изучению React для начинающих разработчиков',
+        author_id: 1,
+        likes: 0,
+        comments: '',
+        createdAt: new Date('2024-01-15'),
+        updatedAt: new Date('2024-01-15'),
+      },
+      {
+        id: 2,
+        title: 'TypeScript vs JavaScript',
+        description:
+          'Сравниваем преимущества и недостатки TypeScript по сравнению с обычным JavaScript',
+        author_id: 2,
+        likes: 0,
+        comments: '',
+        createdAt: new Date('2024-01-14'),
+        updatedAt: new Date('2024-01-14'),
+      },
+      {
+        id: 3,
+        title: 'Архитектура фронтенд приложений',
+        description:
+          'Разбираем различные подходы к архитектуре современных фронтенд приложений',
+        author_id: 1,
+        likes: 0,
+        comments: '',
+        createdAt: new Date('2024-01-13'),
+        updatedAt: new Date('2024-01-13'),
+      },
+      {
+        id: 4,
+        title: 'Оптимизация производительности',
+        description:
+          'Делимся опытом оптимизации производительности веб-приложений и лучшими практиками',
+        author_id: 3,
+        likes: 0,
+        comments: '',
+        createdAt: new Date('2024-01-12'),
+        updatedAt: new Date('2024-01-12'),
+      },
+      {
+        id: 5,
+        title: 'CSS Grid vs Flexbox',
+        description:
+          'Когда использовать CSS Grid, а когда Flexbox? Разбираем на практических примерах',
+        author_id: 4,
+        likes: 0,
+        comments: '',
+        createdAt: new Date('2024-01-11'),
+        updatedAt: new Date('2024-01-11'),
+      },
+    ]);
 
     await queryInterface.bulkInsert('FitnessClubs', [
       {
@@ -230,10 +286,12 @@ module.exports = {
         name: 'Алексей Тренер',
         description: 'Сертифицированный тренер по фитнесу с 10-летним опытом',
         profileImage: '/uploads/trainers/alexey.jpg',
-        qualificationImages: [
+        qualificationImages: JSON.stringify([
           '/uploads/qualifications/alexey-cert1.jpg',
           '/uploads/qualifications/alexey-cert2.jpg',
-        ],
+        ]),
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         email: 'maria@fitness.com',
@@ -241,58 +299,67 @@ module.exports = {
         name: 'Мария Козлова',
         description: 'Мастер спорта по бодибилдингу',
         profileImage: '/uploads/trainers/maria.jpg',
-        qualificationImages: ['/uploads/qualifications/maria-gold.jpg'],
+        qualificationImages: JSON.stringify(['/uploads/qualifications/maria-gold.jpg']),
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
     ];
     await queryInterface.bulkInsert('Trainers', trainers, {});
 
-
-     await queryInterface.bulkInsert('GymReviews', [
-      {
-        rate: 5,
-        userId: null,
-        trainerId: 1,
-        content: 'Отличный зал! Новое оборудование, чисто, просторно. Тренируюсь уже 3 месяца, результат на лицо.',
-        gymId: 1,
-        like: null,
-        dislike: null,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        rate: 4,
-        userId: 2,
-        trainerId: null,
-        content: 'Хороший зал для кардио и групповых занятий. Штанги могли бы быть поновее, но в целом всё устраивает.',
-        gymId: 1,
-        like: 'Кардио зона',
-        dislike: 'Старые штанги',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        rate: 3,
-        userId: 3,
-        trainerId: null,
-        content: 'Средний зал. Очереди на тренажёры в вечернее время, душ только 2 кабинки на всех.',
-        gymId: 2,
-        like: null,
-        dislike: 'Мало душевых',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
-      {
-        rate: 5,
-        userId: 4,
-        trainerId: null,
-        content: 'Лучший зал в районе! Профессиональное оборудование, отличная вентиляция, дружелюбный персонал.',
-        gymId: 2,
-        like: 'Всё',
-        dislike: null,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      }
-    ], {});
+    await queryInterface.bulkInsert(
+      'GymReviews',
+      [
+        {
+          rate: 5,
+          userId: null,
+          trainerId: 1,
+          content:
+            'Отличный зал! Новое оборудование, чисто, просторно. Тренируюсь уже 3 месяца, результат на лицо.',
+          gymId: 1,
+          like: null,
+          dislike: null,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          rate: 4,
+          userId: 2,
+          trainerId: null,
+          content:
+            'Хороший зал для кардио и групповых занятий. Штанги могли бы быть поновее, но в целом всё устраивает.',
+          gymId: 1,
+          like: 'Кардио зона',
+          dislike: 'Старые штанги',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          rate: 3,
+          userId: 3,
+          trainerId: null,
+          content:
+            'Средний зал. Очереди на тренажёры в вечернее время, душ только 2 кабинки на всех.',
+          gymId: 2,
+          like: null,
+          dislike: 'Мало душевых',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          rate: 5,
+          userId: 4,
+          trainerId: null,
+          content:
+            'Лучший зал в районе! Профессиональное оборудование, отличная вентиляция, дружелюбный персонал.',
+          gymId: 2,
+          like: 'Всё',
+          dislike: null,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],
+      {},
+    );
   },
 
   async down(queryInterface, Sequelize) {
