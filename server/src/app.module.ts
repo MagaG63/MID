@@ -10,6 +10,8 @@ import { TrainerModule } from './trainer/trainer.module';
 import { AuthModule } from './auth/auth.module';
 import { GymsModule } from './gyms/gyms.module';
 import { GymsReviewsModule } from './gyms-reviews/gyms-reviews.module';
+import dotenv from 'dotenv';
+dotenv.config();
 
 @Module({
   imports: [
@@ -19,7 +21,7 @@ import { GymsReviewsModule } from './gyms-reviews/gyms-reviews.module';
       port: 5432,
       username: 'postgres',
       password: '123',
-      database: 'fitne',
+      database: process.env.DB_NAME,
       autoLoadModels: true,
       synchronize: false,
       models: [User, Fitness, Trainer],
