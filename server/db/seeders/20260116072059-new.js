@@ -43,18 +43,10 @@ module.exports = {
       name: 'Spirit-fitness',
       contact: '+7 (495) 645-44-55',
       price: '1700-3000',
-      desc: 'Популярная сеть X-Fit с разнообразными групповыми занятиями, функциональным тренингом и качественным оборудованием.',
+      desc: 'Популярная сеть Spirit-fitness с разнообразными групповыми занятиями, функциональным тренингом и качественным оборудованием.',
       createdAt: new Date(),
       updatedAt: new Date(),
     },
-      {
-        name: 'Spirit-fitness',
-        contact: '+7 (495) 645-44-55',
-        price: 1700 - 3000,
-        desc: 'Популярная сеть X-Fit с разнообразными групповыми занятиями, функциональным тренингом и качественным оборудованием.',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
     ]);
 
     const users = [
@@ -94,7 +86,10 @@ module.exports = {
         description:
           'Обсуждаем лучшие практики и подходы к изучению React для начинающих разработчиков',
         author_id: 1,
-        createdAt: '2024-01-15',
+        likes: 0,
+        comments: '',
+        createdAt: new Date('2024-01-15'),
+        updatedAt: new Date('2024-01-15'),
       },
       {
         id: 2,
@@ -102,7 +97,10 @@ module.exports = {
         description:
           'Сравниваем преимущества и недостатки TypeScript по сравнению с обычным JavaScript',
         author_id: 2,
-        createdAt: '2024-01-14',
+        likes: 0,
+        comments: '',
+        createdAt: new Date('2024-01-14'),
+        updatedAt: new Date('2024-01-14'),
       },
       {
         id: 3,
@@ -110,7 +108,10 @@ module.exports = {
         description:
           'Разбираем различные подходы к архитектуре современных фронтенд приложений',
         author_id: 1,
-        createdAt: '2024-01-13',
+        likes: 0,
+        comments: '',
+        createdAt: new Date('2024-01-13'),
+        updatedAt: new Date('2024-01-13'),
       },
       {
         id: 4,
@@ -118,7 +119,10 @@ module.exports = {
         description:
           'Делимся опытом оптимизации производительности веб-приложений и лучшими практиками',
         author_id: 3,
-        createdAt: '2024-01-12',
+        likes: 0,
+        comments: '',
+        createdAt: new Date('2024-01-12'),
+        updatedAt: new Date('2024-01-12'),
       },
       {
         id: 5,
@@ -126,7 +130,10 @@ module.exports = {
         description:
           'Когда использовать CSS Grid, а когда Flexbox? Разбираем на практических примерах',
         author_id: 4,
-        createdAt: '2024-01-11',
+        likes: 0,
+        comments: '',
+        createdAt: new Date('2024-01-11'),
+        updatedAt: new Date('2024-01-11'),
       },
     ]);
 

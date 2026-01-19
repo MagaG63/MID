@@ -34,9 +34,23 @@ export class Trainer extends Model<Trainer, TrainerCreationAttributes> {
   declare profileImage: string;
 
   @Column({
-    type: DataType.ARRAY(DataType.STRING),
+    type: DataType.TEXT,
     allowNull: false,
-    defaultValue: [],
+    defaultValue: '[]',
+    get() {
+      const rawValue = this.getDataValue('qualificationImages' as keyof Trainer);
+      if (typeof rawValue === 'string') {
+        try {
+          return JSON.parse(rawValue);
+        } catch {
+          return [];
+        }
+      }
+      return rawValue || [];
+    },
+    set(value: string[]) {
+      this.setDataValue('qualificationImages' as keyof Trainer, JSON.stringify(value) as any);
+    },
   })
   declare qualificationImages: string[];
 }

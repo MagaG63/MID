@@ -34,6 +34,7 @@ dotenv.config();
     GymsModule,
     GymsReviewsModule,
     FoodDiaryModule,
+    ForumModule,
   ],
 })
 export class AppModule {}
