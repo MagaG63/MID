@@ -21,7 +21,7 @@ dotenv.config();
       dialect: 'postgres',
       host: 'localhost',
       port: 5432,
-      username: 'postgres',
+      username: 'admin',
       password: '123',
       database: process.env.DB_NAME,
       autoLoadModels: true,
