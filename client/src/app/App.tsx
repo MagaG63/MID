@@ -6,11 +6,11 @@ import Layout from './Layout';
 const MainPage = lazy(() => import('../pages/Main/MainPage'));
 const LoginPage = lazy(() => import('../pages/Login/LoginPage'));
 const RegisterPage = lazy(() => import('../pages/Register/RegisterPage'));
-const TopicPage = lazy(() => import('@/pages/Forum/TopicPage'));
+const TopicPage = lazy(() => import('@/pages/Forum/MainForumPage/TopicsPage'))
 const AnalizPage = lazy(() => import('@/pages/Analiz/ui/AnalizPage'));
 
 // Loading компонент
-const PageLoader = () => (
+const PageLoader = () => void (
   <div style={{ 
     display: 'flex', 
     justifyContent: 'center', 
