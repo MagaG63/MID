@@ -4,7 +4,7 @@ import MainPage from '../pages/Main/MainPage';
 import LoginPage from '../pages/Login/LoginPage';
 import RegisterPage from '../pages/Register/RegisterPage';
 import React from 'react';
-import TopicPage from '@/pages/Forum/TopicPage';
+import TopicPage from '@/pages/Forum/MainForumPage/TopicsPage';
 
 function App(): React.JSX.Element {
   return (
