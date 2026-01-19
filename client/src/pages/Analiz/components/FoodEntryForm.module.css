@@ -1,0 +1,48 @@
+/* FoodEntryForm - n8n Style */
+
+.entryForm {
+  background: rgba(45, 45, 45, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+.entryForm label {
+  font-weight: 600;
+  color: #e5e5e5;
+  margin-bottom: 0.5rem;
+}
+
+.entryForm input,
+.entryForm select {
+  background-color: #252525;
+  border-color: #3a3a3a;
+  color: #e5e5e5;
+}
+
+.entryForm input:focus,
+.entryForm select:focus {
+  background-color: #2a2a2a;
+  border-color: #20808d;
+  box-shadow: 0 0 0 0.2rem rgba(32, 128, 141, 0.25);
+  color: #e5e5e5;
+}
+
+.entryForm button {
+  background-color: #20808d;
+  border-color: #20808d;
+  color: #ffffff;
+}
+
+.entryForm button:hover:not(:disabled) {
+  background-color: #2a9aa8;
+  border-color: #2a9aa8;
+}
+
+.entryForm button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

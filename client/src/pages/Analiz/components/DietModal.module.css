@@ -1,0 +1,145 @@
+/* DietModal - n8n Style */
+
+.dietModal .modal-content {
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+  background: rgba(45, 45, 45, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.modalHeader {
+  background-color: #20808d;
+  color: white;
+  border-radius: 16px 16px 0 0;
+  padding: 1.5rem;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.modalHeader .btn-close {
+  filter: brightness(0) invert(1);
+}
+
+.modalIcon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.modalBody {
+  padding: 1.5rem;
+  max-height: 70vh;
+  overflow-y: auto;
+  background-color: #2d2d2d;
+}
+
+.modalBody::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modalBody::-webkit-scrollbar-track {
+  background: #252525;
+  border-radius: 4px;
+}
+
+.modalBody::-webkit-scrollbar-thumb {
+  background: #20808d;
+  border-radius: 4px;
+}
+
+.emptyState {
+  padding: 3rem;
+  text-align: center;
+}
+
+.emptyState p {
+  color: #a0a0a0;
+}
+
+.dietCard {
+  border: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  background: rgba(37, 37, 37, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dietCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.dietName {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #e5e5e5;
+  margin: 0;
+}
+
+.caloriesBadge {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #20808d;
+  color: #ffffff;
+}
+
+.dietDescription {
+  color: #a0a0a0;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.macros {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 1rem;
+  border-top: 2px solid #3a3a3a;
+}
+
+.macroItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.macroLabel {
+  font-size: 0.85rem;
+  color: #a0a0a0;
+  font-weight: 500;
+}
+
+.macroValue {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #20808d;
+}
+
+@media (max-width: 576px) {
+  .modalBody {
+    padding: 1rem;
+  }
+
+  .dietName {
+    font-size: 1.1rem;
+  }
+
+  .macros {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .macroItem {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+}

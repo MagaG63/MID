@@ -1,16 +1,21 @@
+/* TopicCard - n8n Style */
+
 .topic-card {
-  background: white;
-  border-radius: 12px;
+  background: rgba(45, 45, 45, 0.6);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
   padding: 20px;
   margin-bottom: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
-  border: 1px solid #e1e5e9;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .topic-card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .topic-card-header {
@@ -21,7 +26,7 @@
 }
 
 .topic-title {
-  color: #333;
+  color: #e5e5e5;
   font-size: 18px;
   font-weight: 600;
   margin: 0;
@@ -29,16 +34,16 @@
 }
 
 .topic-date {
-  color: #666;
+  color: #a0a0a0;
   font-size: 14px;
-  background-color: #f8f9fa;
+  background-color: #252525;
   padding: 4px 8px;
   border-radius: 6px;
   white-space: nowrap;
 }
 
 .topic-description {
-  color: #555;
+  color: #a0a0a0;
   font-size: 14px;
   line-height: 1.6;
   margin: 0 0 16px 0;
@@ -51,13 +56,13 @@
 }
 
 .topic-author {
-  color: #666;
+  color: #a0a0a0;
   font-size: 13px;
   font-style: italic;
 }
 
 .topic-button {
-  background-color: #007bff;
+  background-color: #20808d;
   color: white;
   border: none;
   padding: 8px 16px;
@@ -69,7 +74,7 @@
 }
 
 .topic-button:hover {
-  background-color: #0056b3;
+  background-color: #2a9aa8;
 }
 
 /* Адаптивность */

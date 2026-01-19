@@ -1,0 +1,29 @@
+/* Layout Styles */
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #202222;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 60px;
+  min-height: 100vh;
+  width: calc(100% - 60px);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 60px;
+    width: calc(100% - 60px);
+  }
+}
+
+@media (max-width: 576px) {
+  .main-content {
+    margin-left: 50px;
+    width: calc(100% - 50px);
+  }
+}

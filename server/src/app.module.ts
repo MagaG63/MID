@@ -1,4 +1,4 @@
-// ✅ Эндпоинты: /api/auth/*, /api/user/*, /api/trainer/*
+// ✅ Эндпоинты: /api/auth/*, /api/user/*, /api/trainer/*, /api/food-diary/*
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { User } from './user/user.model';
@@ -11,6 +11,7 @@ import { TrainerModule } from './trainer/trainer.module';
 import { AuthModule } from './auth/auth.module';
 import { GymsModule } from './gyms/gyms.module';
 import { GymsReviewsModule } from './gyms-reviews/gyms-reviews.module';
+import { FoodDiaryModule } from './food-diary/food-diary.module';
 import dotenv from 'dotenv';
 import { ForumModule } from './forum/forum.module';
 dotenv.config();
@@ -18,12 +19,8 @@ dotenv.config();
 @Module({
   imports: [
     SequelizeModule.forRoot({
-      dialect: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'admin',
-      password: '123',
-      database: process.env.DB_NAME,
+      dialect: 'sqlite',
+      storage: './database.sqlite',
       autoLoadModels: true,
       synchronize: false,
       models: [User, Fitness, Trainer, Forum],
@@ -36,6 +33,7 @@ dotenv.config();
     AuthModule,
     GymsModule,
     GymsReviewsModule,
+    FoodDiaryModule,
     ForumModule,
   ],
 })

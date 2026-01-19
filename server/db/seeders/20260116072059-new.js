@@ -13,40 +13,40 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    await queryInterface.bulkInsert('Gyms', [
-      {
-        name: 'DDX Fitness',
-        contact: '+7 (495) 777-11-22',
-        price: 1900 - 2999,
-        desc: 'Сетевой фитнес-клуб DDX с современными тренажерами, групповыми занятиями и зонами для кардио. Удобное расписание, опытные инструкторы.',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: 'World Class',
-        contact: '+7 (495) 937-77-77',
-        price: 3600 - 14200,
-        desc: 'Премиум фитнес-клуб с бассейном, SPA, групповыми программами и просторным тренажерным залом. Высокий уровень сервиса.',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: 'X-Fit',
-        contact: '+7 (495) 645-44-55',
-        price: 2000 - 9200,
-        desc: 'Популярная сеть X-Fit с разнообразными групповыми занятиями, функциональным тренингом и качественным оборудованием.',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
+ await queryInterface.bulkInsert('Gyms', [
+    {
+      name: 'DDX Fitness',
+      contact: '+7 (495) 777-11-22',
+      price: '1900-2999',
+      desc: 'Сетевой фитнес-клуб DDX с современными тренажерами, групповыми занятиями и зонами для кардио. Удобное расписание, опытные инструкторы.',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      name: 'World Class',
+      contact: '+7 (495) 937-77-77',
+      price: '3600-14200',
+      desc: 'Премиум фитнес-клуб с бассейном, SPA, групповыми программами и просторным тренажерным залом. Высокий уровень сервиса.',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
+    {
+      name: 'X-Fit',
+      contact: '+7 (495) 645-44-55',
+      price: '2000-9200',
+      desc: 'Популярная сеть X-Fit с разнообразными групповыми занятиями, функциональным тренингом и качественным оборудованием.',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
 
-      {
-        name: 'Spirit-fitness',
-        contact: '+7 (495) 645-44-55',
-        price: 1700 - 3000,
-        desc: 'Популярная сеть X-Fit с разнообразными групповыми занятиями, функциональным тренингом и качественным оборудованием.',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
+     {
+      name: 'Spirit-fitness',
+      contact: '+7 (495) 645-44-55',
+      price: '1700-3000',
+      desc: 'Популярная сеть Spirit-fitness с разнообразными групповыми занятиями, функциональным тренингом и качественным оборудованием.',
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    },
     ]);
 
     const users = [
@@ -86,7 +86,10 @@ module.exports = {
         description:
           'Обсуждаем лучшие практики и подходы к изучению React для начинающих разработчиков',
         author_id: 1,
-        createdAt: '2024-01-15',
+        likes: 0,
+        comments: '',
+        createdAt: new Date('2024-01-15'),
+        updatedAt: new Date('2024-01-15'),
       },
       {
         id: 2,
@@ -94,7 +97,10 @@ module.exports = {
         description:
           'Сравниваем преимущества и недостатки TypeScript по сравнению с обычным JavaScript',
         author_id: 2,
-        createdAt: '2024-01-14',
+        likes: 0,
+        comments: '',
+        createdAt: new Date('2024-01-14'),
+        updatedAt: new Date('2024-01-14'),
       },
       {
         id: 3,
@@ -102,7 +108,10 @@ module.exports = {
         description:
           'Разбираем различные подходы к архитектуре современных фронтенд приложений',
         author_id: 1,
-        createdAt: '2024-01-13',
+        likes: 0,
+        comments: '',
+        createdAt: new Date('2024-01-13'),
+        updatedAt: new Date('2024-01-13'),
       },
       {
         id: 4,
@@ -110,7 +119,10 @@ module.exports = {
         description:
           'Делимся опытом оптимизации производительности веб-приложений и лучшими практиками',
         author_id: 3,
-        createdAt: '2024-01-12',
+        likes: 0,
+        comments: '',
+        createdAt: new Date('2024-01-12'),
+        updatedAt: new Date('2024-01-12'),
       },
       {
         id: 5,
@@ -118,7 +130,10 @@ module.exports = {
         description:
           'Когда использовать CSS Grid, а когда Flexbox? Разбираем на практических примерах',
         author_id: 4,
-        createdAt: '2024-01-11',
+        likes: 0,
+        comments: '',
+        createdAt: new Date('2024-01-11'),
+        updatedAt: new Date('2024-01-11'),
       },
     ]);
 
@@ -271,10 +286,12 @@ module.exports = {
         name: 'Алексей Тренер',
         description: 'Сертифицированный тренер по фитнесу с 10-летним опытом',
         profileImage: '/uploads/trainers/alexey.jpg',
-        qualificationImages: [
+        qualificationImages: JSON.stringify([
           '/uploads/qualifications/alexey-cert1.jpg',
           '/uploads/qualifications/alexey-cert2.jpg',
-        ],
+        ]),
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         email: 'maria@fitness.com',
@@ -282,7 +299,9 @@ module.exports = {
         name: 'Мария Козлова',
         description: 'Мастер спорта по бодибилдингу',
         profileImage: '/uploads/trainers/maria.jpg',
-        qualificationImages: ['/uploads/qualifications/maria-gold.jpg'],
+        qualificationImages: JSON.stringify(['/uploads/qualifications/maria-gold.jpg']),
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
     ];
     await queryInterface.bulkInsert('Trainers', trainers, {});

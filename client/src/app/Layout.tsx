@@ -1,19 +1,15 @@
 import NavBar from '@/widgets/NavBAr/NavBar';
 import { Outlet } from 'react-router';
+import './Layout.css';
 
 function Layout(): React.JSX.Element {
   return (
-    <>
-      <header>
-        <NavBar />
-      </header>
-      <main>
+    <div className="app-layout">
+      <NavBar />
+      <div className="main-content">
         <Outlet />
-      </main>
-      <footer>
-        <p>Footer</p>
-      </footer>
-    </>
+      </div>
+    </div>
   );
 }
 
