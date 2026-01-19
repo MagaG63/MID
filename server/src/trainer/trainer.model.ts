@@ -33,10 +33,10 @@ export class Trainer extends Model<Trainer, TrainerCreationAttributes> {
   @Column({ type: DataType.STRING, allowNull: false })
   declare profileImage: string;
 
-  @Column({ 
-    type: DataType.ARRAY(DataType.STRING), 
+  @Column({
+    type: DataType.ARRAY(DataType.STRING),
     allowNull: false,
-    defaultValue: []
+    defaultValue: [],
   })
   declare qualificationImages: string[];
 }
