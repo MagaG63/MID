@@ -4,70 +4,33 @@ const bcrypt = require('bcrypt');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-     */
-    await queryInterface.bulkInsert('Gyms', [
-      {
-        name: 'DDX Fitness',
-        contact: '+7 (495) 777-11-22',
-        price: '1900-2999',
-        desc: 'Сетевой фитнес-клуб DDX с современными тренажерами, групповыми занятиями и зонами для кардио. Удобное расписание, опытные инструкторы.',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: 'World Class',
-        contact: '+7 (495) 937-77-77',
-        price: '3600-14200',
-        desc: 'Премиум фитнес-клуб с бассейном, SPA, групповыми программами и просторным тренажерным залом. Высокий уровень сервиса.',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: 'X-Fit',
-        contact: '+7 (495) 645-44-55',
-        price: '2000-9200',
-        desc: 'Популярная сеть X-Fit с разнообразными групповыми занятиями, функциональным тренингом и качественным оборудованием.',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
+    // Очищаем таблицы перед вставкой
+    await queryInterface.bulkDelete('Users', null, {});
+    await queryInterface.bulkDelete('Trainers', null, {});
+    await queryInterface.bulkDelete('FitnessClubs', null, {});
 
-      {
-        name: 'Spirit-fitness',
-        contact: '+7 (495) 645-44-55',
-        price: '1700-3000',
-        desc: 'Популярная сеть Spirit-fitness с разнообразными групповыми занятиями, функциональным тренингом и качественным оборудованием.',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-    ]);
+    const salt = await bcrypt.genSalt(10);
+    const hashedPass = await bcrypt.hash('123456', 10);
 
     const users = [
       {
-        name: 'Админ Панель',
-        email: 'admin@fitnessapp.com',
-        hashpass: bcrypt.hashSync('admin2026', 12),
+        name: 'alex',
+        email: 'alex@user.com',
+        hashpass: hashedPass,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'Иван Сидоров',
-        email: 'ivan@example.com',
-        hashpass: bcrypt.hashSync('password123', 12),
+        name: 'john',
+        email: 'john@user.com',
+        hashpass: hashedPass,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'Анна Петрова',
-        email: 'anna@example.com',
-        hashpass: bcrypt.hashSync('user2026', 12),
+        name: 'leha',
+        email: 'leha@user.com',
+        hashpass: hashedPass,
         createdAt: new Date(),
         updatedAt: new Date(),
       },

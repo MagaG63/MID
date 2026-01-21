@@ -1,6 +1,5 @@
-/* LoginPage - Perplexity.ai Dark Theme */
-
-.auth-container {
+/* LoginForm.css */
+.login-form-container {
   min-height: 80vh;
   display: flex;
   justify-content: center;
@@ -9,7 +8,7 @@
   background-color: #202222;
 }
 
-.auth-card {
+.login-card {
   background: #2d2d2d;
   padding: 40px;
   border-radius: 12px;
@@ -19,7 +18,7 @@
   border: 1px solid #3a3a3a;
 }
 
-.auth-title {
+.login-title {
   text-align: center;
   color: #e5e5e5;
   font-size: 28px;
@@ -27,7 +26,44 @@
   margin-bottom: 30px;
 }
 
-.auth-form {
+/* Переключатель роли */
+.role-switcher {
+  display: flex;
+  margin-bottom: 30px;
+  background-color: #252525;
+  border-radius: 8px;
+  padding: 4px;
+  border: 1px solid #3a3a3a;
+}
+
+.role-button {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  background: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #a0a0a0;
+}
+
+.role-button:hover {
+  background-color: #2d2d2d;
+}
+
+.role-button.active {
+  background-color: #20808d;
+  color: white;
+}
+
+.role-button.trainer.active {
+  background-color: #ff8c42;
+}
+
+/* Форма */
+.login-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -65,7 +101,19 @@
   color: #a0a0a0;
 }
 
-.auth-button-submit {
+/* Сообщение об ошибке */
+.error-message {
+  background-color: rgba(220, 53, 69, 0.1);
+  border-left: 4px solid #dc3545;
+  color: #f8d7da;
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+/* Кнопка входа */
+.login-button {
   background-color: #20808d;
   color: white;
   border: none;
@@ -78,10 +126,24 @@
   margin-top: 10px;
 }
 
-.auth-button-submit:hover {
+.login-button:hover {
   background-color: #2a9aa8;
 }
 
+.login-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.login-button.trainer {
+  background-color: #ff8c42;
+}
+
+.login-button.trainer:hover {
+  background-color: #ff9e5a;
+}
+
+/* Ссылки */
 .auth-footer {
   text-align: center;
   margin-top: 24px;
@@ -94,13 +156,31 @@
   margin: 0;
 }
 
-.auth-footer a {
+.auth-link {
   color: #20808d;
   text-decoration: none;
   font-weight: 500;
+  margin-left: 5px;
 }
 
-.auth-footer a:hover {
+.auth-link:hover {
   text-decoration: underline;
   color: #2a9aa8;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .login-card {
+    padding: 30px 20px;
+    margin: 0 15px;
+  }
+
+  .login-title {
+    font-size: 24px;
+  }
+
+  .role-button {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
 }

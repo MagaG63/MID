@@ -1,23 +1,22 @@
-import axios from 'axios';
-import { userScheme, userRegistSchema } from '../model/user.scheme';
+import { userScheme } from '../model/user.scheme';
 import type { UserType, UserRegist } from '../model/user.type';
+import axiosInstance, { setAccessToken } from '@/shared/api/axiosInstance';
 
 class UserService {
   static async createUser(data: UserRegist): Promise<UserType> {
     try {
-      const response = await axios.post('/api/auth/register', {
-        name: data.name,
-        email: data.email,
-        password: data.password,
-      });
-      return userScheme.parse(response.data.user || response.data);
+      console.log('🚀 USER REGISTER -> /api/auth/register', data);
+      const response = await axiosInstance.post('/api/auth/register', data);
+      return response.data.user;
     } catch (error: any) {
-      console.log('🚨 CREATE ERROR:', {
+      console.log('🚨 CREATE ERROR FULL:', {
         message: error.message,
         status: error.response?.status,
-        data: error.response?.data,
+        statusText: error.response?.statusText,
+        fullResponseData: error.response?.data, // ← вот это важно!
+        fullError: error,
       });
-      throw new Error('Ошибка регистрации');
+      throw error;
     }
   }
 
@@ -27,24 +26,31 @@ class UserService {
     role?: string;
   }): Promise<UserType> {
     try {
-      console.log('🔄 LOGIN REQUEST:', data);
-      const response = await axios.post('/api/auth/login', {
-        email: data.email,
-        password: data.password,
-        role: data.role || 'user',
-      });
-      console.log('✅ LOGIN RESPONSE:', response.data);
+      const response = await axiosInstance.post('/api/auth/login', data);
 
-      const userData = response.data.user || response.data;
-      const parsed = userScheme.safeParse(userData);
-
-      if (!parsed.success) {
-        console.log('Zod parse error:', parsed.error.errors);
-        return userData as UserType;
+      // ✅ СОХРАНЯЕМ ТОКЕН, ЕСЛИ ОН ЕСТЬ
+      if (response.data.accessToken) {
+        setAccessToken(response.data.accessToken);
       }
-      return parsed.data;
+
+      const userData = response.data.user;
+      return userScheme.parse(userData); // Используем parse, чтобы убедиться в данных
     } catch (error: any) {
-      console.log('🚨 LOGIN ERROR:', error);
+      console.log('Login error:', error);
+      throw error;
+    }
+  }
+
+  static async updateUser(data: { name: string; email: string }): Promise<UserType> {
+    try {
+      console.log('🔄 USER UPDATE -> /api/user/profile', data);
+      const response = await axiosInstance.put('/api/user/profile', data);
+      return response.data.user;
+    } catch (error: any) {
+      console.log('🚨 UPDATE ERROR:', {
+        message: error.message,
+        response: error.response?.data,
+      });
       throw error;
     }
   }

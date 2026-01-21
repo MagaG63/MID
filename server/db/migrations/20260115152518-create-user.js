@@ -1,3 +1,4 @@
+// migrations/create-users-table.js
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -8,9 +9,19 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      name: { type: Sequelize.STRING, allowNull: false },
-      email: { type: Sequelize.STRING, allowNull: false, unique: true }, // ✅ unique добавлено
-      hashpass: { type: Sequelize.TEXT, allowNull: false }, // ✅ hashpass вместо password
+      name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+      },
+      hashpass: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

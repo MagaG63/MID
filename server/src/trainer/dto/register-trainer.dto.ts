@@ -1,11 +1,10 @@
-// ✅ Для POST /api/auth/register-trainer
+// dto/register-trainer.dto.ts
 import {
-  IsEmail,
   IsString,
+  IsEmail,
   MinLength,
   IsOptional,
   IsArray,
-  IsNotEmpty,
 } from 'class-validator';
 
 export class RegisterTrainerDto {
@@ -19,16 +18,22 @@ export class RegisterTrainerDto {
   @MinLength(6)
   password: string;
 
-  @IsString()
-  @IsNotEmpty()
-  profileImage: string;
-
-  @IsArray()
-  @IsString({ each: true })
-  @IsNotEmpty({ each: true })
-  qualificationImages: string[];
-
   @IsOptional()
   @IsString()
   description?: string;
+
+  // Для фронтенда - принимаем файлы
+  profileImageFile?: Express.Multer.File;
+
+  qualificationImageFiles?: Express.Multer.File[];
+
+  // Для БД - сохраняем пути
+  @IsOptional()
+  @IsString()
+  profileImage?: string;
+
+  @IsOptional()
+  @IsArray()
+  @IsString({ each: true })
+  qualificationImages?: string[];
 }

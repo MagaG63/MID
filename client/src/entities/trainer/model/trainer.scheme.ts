@@ -17,10 +17,11 @@ export const trainerScheme = z
     id: z.number(),
     email: z.string(),
     name: z.string(),
-    role: z.enum(['trainer', 'user']).optional(), // ✅ Добавили role
-    // ✅ УБРАЛИ profileImage и qualificationImages - их нет в ответе login!
+    role: z.enum(['trainer', 'user']).optional(),
+    profileImage: z.string().optional(), // Добавьте опциональные поля
+    qualificationImages: z.array(z.string()).optional(),
   })
-  .loose(); // ✅ Разрешаем ВСЕ остальные поля
+  .catchall(z.any()); // или .catchall(z.any()) вместо .loose()// ✅ Разрешаем ВСЕ остальные поля
 
 export const trainerSignScheme = z.object({
   email: z.string(),

@@ -32,3 +32,16 @@ export const registerUserThunk = createAsyncThunk<UserType, UserRegist, { reject
     }
   },
 );
+
+export const updateUserThunk = createAsyncThunk<
+  UserType,
+  { name: string; email: string },
+  { rejectValue: string }
+>('user/update', async (data, { rejectWithValue }) => {
+  try {
+    return await UserService.updateUser(data);
+  } catch (error: any) {
+    console.log('Thunk update error:', error.message);
+    return rejectWithValue(error.message);
+  }
+});
