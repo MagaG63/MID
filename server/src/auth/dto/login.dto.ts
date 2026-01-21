@@ -11,11 +11,8 @@ export enum UserRole {
   TRAINER = 'trainer',
 }
 
+// auth/dto/login.dto.ts
 export class LoginDto {
-  @IsOptional()
-  @IsString()
-  name?: string; // ✅ ДОБАВИЛИ
-
   @IsEmail()
   email: string;
 
@@ -23,7 +20,7 @@ export class LoginDto {
   @MinLength(6)
   password: string;
 
-  @IsOptional()
   @IsEnum(UserRole)
-  role?: UserRole;
+  @IsOptional()
+  role?: UserRole; // 'user' или 'trainer'
 }

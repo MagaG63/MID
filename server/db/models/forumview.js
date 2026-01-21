@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       ForumView.belongsTo(models.Forum, { foreignKey: 'forum_id' });
-      ForumView.belongsTo(models.Trainer, {
+      ForumView.belongsTo(models.User, {
         foreignKey: 'user_id',
         optional: true,
       });

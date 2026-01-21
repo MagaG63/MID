@@ -13,7 +13,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   ForumCategory.init(
     {
-      id: DataTypes.INTEGER,
       name: DataTypes.STRING,
       slug: DataTypes.STRING,
       description: DataTypes.TEXT,

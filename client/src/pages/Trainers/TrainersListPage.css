@@ -1,0 +1,224 @@
+/* pages/Trainers/TrainersListPage.css */
+.trainers-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 40px 20px;
+}
+
+.trainers-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.trainers-header h1 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.trainers-header p {
+  font-size: 18px;
+  color: #666;
+}
+
+.trainers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.trainer-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.trainer-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.trainer-image-container {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trainer-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.trainer-image-placeholder {
+  font-size: 80px;
+  color: white;
+}
+
+.trainer-info {
+  padding: 25px;
+}
+
+.trainer-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 15px 0;
+}
+
+.trainer-rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.star {
+  font-size: 20px;
+}
+
+.star.filled {
+  color: #ffc107;
+}
+
+.star.half {
+  color: #ffc107;
+  opacity: 0.5;
+}
+
+.star.empty {
+  color: #ddd;
+}
+
+.rating-text {
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.trainer-description {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.trainer-programs h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.programs-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.programs-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.programs-list li:last-child {
+  border-bottom: none;
+}
+
+.program-name {
+  font-size: 14px;
+  color: #555;
+  flex: 1;
+}
+
+.program-price {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4caf50;
+}
+
+.more-programs {
+  color: #667eea;
+  font-weight: 600;
+  font-size: 14px;
+  justify-content: center !important;
+}
+
+.no-programs {
+  font-size: 14px;
+  color: #999;
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.view-profile-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.view-profile-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(102, 126, 234, 0.3);
+}
+
+.loading,
+.empty-state {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+.loading {
+  font-size: 20px;
+  color: #666;
+}
+
+.empty-state h2 {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.empty-state p {
+  font-size: 18px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .trainers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trainers-header h1 {
+    font-size: 32px;
+  }
+
+  .trainer-card {
+    margin: 0 10px;
+  }
+}

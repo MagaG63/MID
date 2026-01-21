@@ -26,8 +26,8 @@ module.exports = (sequelize, DataTypes) => {
       trainerId: DataTypes.INTEGER,
       content: DataTypes.TEXT,
       gymId: DataTypes.INTEGER,
-      like: DataTypes.ARRAY(DataTypes.STRING),
-      dislike: DataTypes.ARRAY(DataTypes.STRING),
+      like: DataTypes.STRING,
+      dislike: DataTypes.STRING,
     },
     {
       sequelize,

@@ -5,6 +5,15 @@ import { useEffect } from 'react';
 import './MainPage.css';
 
 function MainPage(): React.JSX.Element {
+  const trainer = useAppSelector((str) => str.user.currentUser)
+  const user = useAppSelector((str) => str.trainer.currentTrainer)
+
+  if (user){
+    console.log(user)
+  }
+  if (trainer){
+    console.log(trainer)
+  }
   const fitness = useAppSelector((store) => store.fitness.fitnessClubs);
   const dispatch = useAppDispatch();
 

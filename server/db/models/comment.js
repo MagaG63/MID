@@ -13,7 +13,6 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'author_id',
         as: 'author',
       });
-      Comment.hasMany(models.CommentLike, { foreignKey: 'comment_id' });
     }
   }
   Comment.init(
