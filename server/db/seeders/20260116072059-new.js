@@ -4,70 +4,33 @@ const bcrypt = require('bcrypt');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-     */
-    await queryInterface.bulkInsert('Gyms', [
-      {
-        name: 'DDX Fitness',
-        contact: '+7 (495) 777-11-22',
-        price: '1900-2999',
-        desc: 'Сетевой фитнес-клуб DDX с современными тренажерами, групповыми занятиями и зонами для кардио. Удобное расписание, опытные инструкторы.',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: 'World Class',
-        contact: '+7 (495) 937-77-77',
-        price: '3600-14200',
-        desc: 'Премиум фитнес-клуб с бассейном, SPA, групповыми программами и просторным тренажерным залом. Высокий уровень сервиса.',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: 'X-Fit',
-        contact: '+7 (495) 645-44-55',
-        price: '2000-9200',
-        desc: 'Популярная сеть X-Fit с разнообразными групповыми занятиями, функциональным тренингом и качественным оборудованием.',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
+    // Очищаем таблицы перед вставкой
+    await queryInterface.bulkDelete('Users', null, {});
+    await queryInterface.bulkDelete('Trainers', null, {});
+    await queryInterface.bulkDelete('FitnessClubs', null, {});
 
-      {
-        name: 'Spirit-fitness',
-        contact: '+7 (495) 645-44-55',
-        price: '1700-3000',
-        desc: 'Популярная сеть Spirit-fitness с разнообразными групповыми занятиями, функциональным тренингом и качественным оборудованием.',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-    ]);
+    const salt = await bcrypt.genSalt(10);
+    const hashedPass = await bcrypt.hash('123456', 10);
 
     const users = [
       {
-        name: 'Админ Панель',
-        email: 'admin@fitnessapp.com',
-        hashpass: bcrypt.hashSync('admin2026', 12),
+        name: 'alex',
+        email: 'alex@user.com',
+        hashpass: hashedPass,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'Иван Сидоров',
-        email: 'ivan@example.com',
-        hashpass: bcrypt.hashSync('password123', 12),
+        name: 'john',
+        email: 'john@user.com',
+        hashpass: hashedPass,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'Анна Петрова',
-        email: 'anna@example.com',
-        hashpass: bcrypt.hashSync('user2026', 12),
+        name: 'leha',
+        email: 'leha@user.com',
+        hashpass: hashedPass,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -179,6 +142,8 @@ module.exports = {
         workingHours: 'Круглосуточно',
         image:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ0CdzMMMjgyquZvhAl3_yAeYKpH_qdMf7aw&s',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: 'Flex Studio',
@@ -193,6 +158,8 @@ module.exports = {
         workingHours: 'Пн-Вс: 07:00-23:00',
         image:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzR9OHgnX3ysuBNtqKIK8G_JLAMKdQHjA3wg&s',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: 'CrossFit Arena',
@@ -207,6 +174,8 @@ module.exports = {
         workingHours: 'Пн-Пт: 06:00-22:00, Сб: 08:00-20:00, Вс: 09:00-18:00',
         image:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHAb_TEbxK0FfkxppH2vZRO_5vwOxuGJ_eiQ&s',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: 'Iron Will',
@@ -221,6 +190,8 @@ module.exports = {
         workingHours: 'Пн-Вс: 05:00-01:00',
         image:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxKbA-4utcJV7K3E_QfH4vVhKujog8WJZ5ag&s',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: 'Zenith Fitness',
@@ -235,6 +206,8 @@ module.exports = {
         workingHours: 'Пн-Вс: 06:00-24:00',
         image:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjWdbVTYi_RfKBH1P9OMrM0iTg_Z6bZbn0EQ&s',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: 'Urban Athlete',
@@ -249,6 +222,8 @@ module.exports = {
         workingHours: 'Пн-Пт: 06:00-23:00, Сб-Вс: 08:00-22:00',
         image:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqWcv7lmy9cN3gILi8agDGTdZcHV1GvTX7rQ&s',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: 'Hercules Gym',
@@ -263,6 +238,8 @@ module.exports = {
         workingHours: 'Пн-Вс: 07:00-23:00',
         image:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN2blfrwOD98mI70krBTrX2TZOkUiqxRGhSg&s',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: 'Elite Fitness Club',
@@ -277,6 +254,8 @@ module.exports = {
         workingHours: 'Пн-Вс: 06:00-24:00',
         image:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFz7qajsqM35u-pds4tJfE18CN9pHzHmFW4A&s',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
     ]);
     const trainers = [
@@ -308,60 +287,60 @@ module.exports = {
     ];
     await queryInterface.bulkInsert('Trainers', trainers, {});
 
-    await queryInterface.bulkInsert(
-      'GymReviews',
-      [
-        {
-          rate: 5,
-          userId: null,
-          trainerId: 1,
-          content:
-            'Отличный зал! Новое оборудование, чисто, просторно. Тренируюсь уже 3 месяца, результат на лицо.',
-          gymId: 1,
-          like: null,
-          dislike: null,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          rate: 4,
-          userId: 2,
-          trainerId: null,
-          content:
-            'Хороший зал для кардио и групповых занятий. Штанги могли бы быть поновее, но в целом всё устраивает.',
-          gymId: 1,
-          like: 'Кардио зона',
-          dislike: 'Старые штанги',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          rate: 3,
-          userId: 3,
-          trainerId: null,
-          content:
-            'Средний зал. Очереди на тренажёры в вечернее время, душ только 2 кабинки на всех.',
-          gymId: 2,
-          like: null,
-          dislike: 'Мало душевых',
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-        {
-          rate: 5,
-          userId: 4,
-          trainerId: null,
-          content:
-            'Лучший зал в районе! Профессиональное оборудование, отличная вентиляция, дружелюбный персонал.',
-          gymId: 2,
-          like: 'Всё',
-          dislike: null,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-      ],
-      {},
-    );
+    // await queryInterface.bulkInsert(
+    //   'GymReviews',
+    //   [
+    //     {
+    //       rate: 5,
+    //       userId: null,
+    //       trainerId: 1,
+    //       content:
+    //         'Отличный зал! Новое оборудование, чисто, просторно. Тренируюсь уже 3 месяца, результат на лицо.',
+    //       gymId: 1,
+    //       like: null,
+    //       dislike: null,
+    //       createdAt: new Date(),
+    //       updatedAt: new Date(),
+    //     },
+    //     {
+    //       rate: 4,
+    //       userId: 2,
+    //       trainerId: null,
+    //       content:
+    //         'Хороший зал для кардио и групповых занятий. Штанги могли бы быть поновее, но в целом всё устраивает.',
+    //       gymId: 1,
+    //       like: 'Кардио зона',
+    //       dislike: 'Старые штанги',
+    //       createdAt: new Date(),
+    //       updatedAt: new Date(),
+    //     },
+    //     {
+    //       rate: 3,
+    //       userId: 1,
+    //       trainerId: null,
+    //       content:
+    //         'Средний зал. Очереди на тренажёры в вечернее время, душ только 2 кабинки на всех.',
+    //       gymId: 2,
+    //       like: null,
+    //       dislike: 'Мало душевых',
+    //       createdAt: new Date(),
+    //       updatedAt: new Date(),
+    //     },
+    //     {
+    //       rate: 5,
+    //       userId: 1,
+    //       trainerId: null,
+    //       content:
+    //         'Лучший зал в районе! Профессиональное оборудование, отличная вентиляция, дружелюбный персонал.',
+    //       gymId: 2,
+    //       like: 'Всё',
+    //       dislike: null,
+    //       createdAt: new Date(),
+    //       updatedAt: new Date(),
+    //     },
+    //   ],
+    //   {},
+    // );
   },
 
   async down(queryInterface, Sequelize) {

@@ -20,7 +20,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   Forum.init(
     {
-      id: DataTypes.INTEGER,
       title: DataTypes.STRING,
       description: DataTypes.TEXT,
       author_id: DataTypes.INTEGER,
