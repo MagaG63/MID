@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { FitnessService } from './fitness.service';
 
 @Controller('fitness')
@@ -10,9 +10,8 @@ export class FitnessController {
     return this.fitnessService.getAll();
   }
 
-  //   // Если понадобится получить один клуб
-  //   @Get(':id')
-  //   findOne(@Param('id') id: string) {
-  //     return this.fitnessService.getOne(+id);
-  //   }
+  @Get(':id')
+  findOne(@Param('id') id: string) {
+    return this.fitnessService.getOne(+id);
+  }
 }

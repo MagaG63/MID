@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { FitnessState } from './fitness.Type';
-import { fetchFitnessClubsThunk } from './fitness.Thunks';
+import { fetchFitnessClubsThunk, getOneFitnessClubThunk } from './fitness.Thunks';
 
 const initialState: FitnessState = {
   fitnessClubs: [],
+  currentClub: null,
 };
 
 export const fitnessSlice = createSlice({
@@ -14,6 +15,17 @@ export const fitnessSlice = createSlice({
     builder.addCase(fetchFitnessClubsThunk.fulfilled, (state, action) => {
       state.fitnessClubs = action.payload;
     });
+    builder
+      .addCase(getOneFitnessClubThunk.fulfilled, (state, action) => {
+        state.currentClub = action.payload;
+      })
+      .addCase(getOneFitnessClubThunk.pending, (state) => {
+        state.currentClub = null;
+      })
+      .addCase(getOneFitnessClubThunk.rejected, (state, action) => {
+        state.currentClub = null;
+        console.log(action.error);
+      });
   },
 });
 

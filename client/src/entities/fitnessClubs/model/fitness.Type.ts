@@ -5,4 +5,5 @@ export type FitnessType = z.infer<typeof fitnessSchema>;
 
 export type FitnessState = {
   fitnessClubs: FitnessType[];
+  currentClub: FitnessType | null;
 };

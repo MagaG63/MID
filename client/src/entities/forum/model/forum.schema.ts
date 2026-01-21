@@ -5,8 +5,11 @@ export const forumPageSchema = z.object({
   title: z.string(),
   description: z.string(),
   author_id: z.number(),
-  likes: z.number().nullable(),
-  comments: z.number().nullable(),
+  category_id: z.number(),
+  status: z.string(),
+  is_pinned: z.boolean(),
+  createdAt: z.string().nullable().optional(),
+  updatedAt: z.string().nullable().optional(),
 });
 
 export const forumSchema = z.object({
@@ -14,4 +17,9 @@ export const forumSchema = z.object({
   title: z.string(),
   description: z.string(),
   author_id: z.number(),
+  category_id: z.number(),
+  status: z.string(),
+  is_pinned: z.boolean(),
+  createdAt: z.string().nullable().optional(),
+  updatedAt: z.string().nullable().optional(),
 });

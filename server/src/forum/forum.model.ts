@@ -1,4 +1,12 @@
-import { Column, DataType, Table, Model } from 'sequelize-typescript';
+import {
+  Column,
+  DataType,
+  Table,
+  Model,
+  ForeignKey,
+  BelongsTo,
+  HasMany,
+} from 'sequelize-typescript';
 
 @Table({
   tableName: 'Forums',
@@ -27,11 +35,19 @@ export class Forum extends Model<Forum> {
     type: DataType.INTEGER,
     allowNull: false,
   })
-  likes: number;
+  category_id: number;
 
   @Column({
-    type: DataType.STRING,
+    type: DataType.ENUM('active', 'closed', 'archived'),
+    defaultValue: 'active',
     allowNull: false,
   })
-  comments: string;
+  status: string;
+
+  @Column({
+    type: DataType.BOOLEAN,
+    defaultValue: false,
+    allowNull: false,
+  })
+  is_pinned: boolean;
 }

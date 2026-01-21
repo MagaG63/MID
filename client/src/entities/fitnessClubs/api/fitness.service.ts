@@ -14,5 +14,15 @@ class FitnessService {
       throw error;
     }
   }
+
+  static async getOneClub(id: number): Promise<FitnessType | null> {
+    try {
+      const response = await axios.get(`/api/fitness/${id.toString()}`);
+      return fitnessSchema.parse(response.data);
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
 }
 export default FitnessService;
