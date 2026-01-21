@@ -1,0 +1,40 @@
+/* FitnessClubPage - сетка карточек */
+.fitness-clubs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+}
+
+/* Переопределяем Bootstrap Row */
+.fitness-clubs-row {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)) !important;
+  gap: 30px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+  .fitness-clubs-grid,
+  .fitness-clubs-row {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .fitness-clubs-grid,
+  .fitness-clubs-row {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .fitness-clubs-grid,
+  .fitness-clubs-row {
+    gap: 15px !important;
+  }
+}

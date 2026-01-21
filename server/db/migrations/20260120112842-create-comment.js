@@ -2,20 +2,22 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Forums', {
+    await queryInterface.createTable('forum_comments', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      title: {
-        type: Sequelize.STRING,
+      forum_id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
-      },
-      description: {
-        type: Sequelize.TEXT,
-        allowNull: false,
+        references: {
+          model: 'Forums',
+          key: 'id',
+        },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
       },
       author_id: {
         type: Sequelize.INTEGER,
@@ -27,39 +29,41 @@ module.exports = {
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
-      category_id: {
-        type: Sequelize.INTEGER,
+      content: {
+        type: Sequelize.TEXT,
         allowNull: false,
+      },
+      parent_id: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
         references: {
-          model: 'forum_categories',
+          model: 'forum_comments',
           key: 'id',
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
-      status: {
-        type: Sequelize.ENUM('active', 'closed', 'archived'),
-        defaultValue: 'active',
+      likes_count: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0,
         allowNull: false,
       },
-      is_pinned: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
+      status: {
+        type: Sequelize.ENUM('active', 'deleted', 'hidden'),
+        defaultValue: 'active',
         allowNull: false,
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Forums');
+    await queryInterface.dropTable('forum_comments');
   },
 };

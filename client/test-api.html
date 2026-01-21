@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+</head>
+<body>
+    <h1>API Test</h1>
+    <button onclick="testForumAPI()">Test Forum API</button>
+    <button onclick="testFitnessAPI()">Test Fitness API</button>
+    <div id="result"></div>
+
+    <script>
+        async function testForumAPI() {
+            try {
+                const response = await fetch('http://localhost:3000/api/forum/all');
+                const data = await response.json();
+                document.getElementById('result').innerHTML = 
+                    '<h3>Forum API Result:</h3><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            } catch (error) {
+                document.getElementById('result').innerHTML = 
+                    '<h3>Forum API Error:</h3><pre>' + error.message + '</pre>';
+            }
+        }
+
+        async function testFitnessAPI() {
+            try {
+                const response = await fetch('http://localhost:3000/api/fitness/all');
+                const data = await response.json();
+                document.getElementById('result').innerHTML = 
+                    '<h3>Fitness API Result:</h3><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            } catch (error) {
+                document.getElementById('result').innerHTML = 
+                    '<h3>Fitness API Error:</h3><pre>' + error.message + '</pre>';
+            }
+        }
+    </script>
+</body>
+</html>

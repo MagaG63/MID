@@ -4,6 +4,7 @@ import { lazy, Suspense } from 'react';
 import Layout from './Layout';
 import ProtectedRoute from '@/shared/lib/ProtectedRoute';
 import { useAuth } from '@/shared/lib/useAuth';
+import FitnessPage from '@/pages/FitnessIfno/FitnessPage';
 
 // Lazy loading страниц
 const MainPage = lazy(() => import('../pages/Main/MainPage'));
@@ -16,20 +17,21 @@ const TrainersListPage = lazy(() => import('@/pages/Trainers/TrainersListPage'))
 const TrainerProfilePage = lazy(() => import('@/pages/Trainers/TrainerProfilePage'));
 
 // Loading компонент
-const PageLoader = () => (
-  <div
-    style={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      minHeight: '100vh',
-    }}
-  >
-    <div className="spinner-border text-primary" role="status">
-      <span className="visually-hidden">Загрузка...</span>
+const PageLoader = () =>
+  void (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh',
+      }}
+    >
+      <div className="spinner-border text-primary" role="status">
+        <span className="visually-hidden">Загрузка...</span>
+      </div>
     </div>
-  </div>
-);
+  );
 
 function App(): React.JSX.Element {
   const { isLoggedIn } = useAuth();

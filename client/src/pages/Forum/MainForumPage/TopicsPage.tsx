@@ -7,15 +7,19 @@ import React, { useEffect } from 'react';
 function TopicPage(): React.JSX.Element {
   const forums = useAppSelector((store) => store.forums.forums);
   const dispatch = useAppDispatch();
+  
   useEffect(() => {
     void dispatch(fetchForums());
-  },[] );
+  }, [dispatch]); // Добавляем зависимость dispatch
+  
   return (
     <>
       <div>TopicPage</div>
-      {forums.map((topic) => (
-        <TopicCard key={topic.id} topic={topic} />
-      ))}
+      <div style={{ marginLeft: '10px', marginRight: '10px' }}>
+        {forums.map((topic) => (
+          <TopicCard key={topic.id} topic={topic} />
+        ))}
+      </div>
     </>
   );
 }

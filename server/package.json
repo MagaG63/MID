@@ -38,6 +38,7 @@
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "reflect-metadata": "^0.2.2",
+    "rm": "^0.1.8",
     "rxjs": "^7.8.2",
     "sequelize": "^6.37.7",
     "sequelize-typescript": "^2.1.6",

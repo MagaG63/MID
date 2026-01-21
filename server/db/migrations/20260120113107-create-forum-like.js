@@ -2,64 +2,55 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Forums', {
+    await queryInterface.createTable('forum_likes', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      title: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      description: {
-        type: Sequelize.TEXT,
-        allowNull: false,
-      },
-      author_id: {
+      forum_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'Trainers',
+          model: 'Forums',
           key: 'id',
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
-      category_id: {
+      user_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'forum_categories',
+          model: 'Users',
           key: 'id',
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE',
       },
-      status: {
-        type: Sequelize.ENUM('active', 'closed', 'archived'),
-        defaultValue: 'active',
-        allowNull: false,
-      },
-      is_pinned: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
+      type: {
+        type: Sequelize.ENUM('like', 'dislike'),
+        defaultValue: 'like',
         allowNull: false,
       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
+    });
+
+    // Добавляем уникальный индекс
+    await queryInterface.addIndex('forum_likes', ['forum_id', 'user_id'], {
+      unique: true,
+      name: 'forum_likes_forum_user_unique',
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Forums');
+    await queryInterface.dropTable('forum_likes');
   },
 };

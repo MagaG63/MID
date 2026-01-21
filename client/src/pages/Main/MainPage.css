@@ -1,0 +1,52 @@
+/* MainPage - темная тема */
+.main-page {
+  background-color: #202222;
+  min-height: 100vh;
+  padding: 20px;
+  color: #e5e5e5;
+}
+
+.main-page h2 {
+  color: #e5e5e5;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.main-page p {
+  color: #a0a0a0;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Контейнер для карточек фитнес клубов */
+.fitness-clubs-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.fitness-clubs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 30px;
+  padding: 20px 0;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .main-page {
+    padding: 10px;
+  }
+
+  .fitness-clubs-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .main-page h2 {
+    font-size: 24px;
+  }
+}
