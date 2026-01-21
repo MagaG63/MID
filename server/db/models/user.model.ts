@@ -1,5 +1,5 @@
-import { Table, Column, Model, DataType, HasMany } from 'sequelize-typescript';
-import { GymReviews } from './GymReviews.model';
+// user/user.model.ts
+import { Table, Column, Model, DataType } from 'sequelize-typescript';
 
 export interface UserCreationAttributes {
   name: string;
@@ -20,8 +20,4 @@ export class User extends Model<User, UserCreationAttributes> {
 
   @Column({ type: DataType.TEXT, allowNull: false })
   declare hashpass: string;
-
-  // Один пользователь может оставить много отзывов о разных залах
-  @HasMany(() => GymReviews, { foreignKey: 'userId' })
-  declare reviews: GymReviews[];
 }

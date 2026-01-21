@@ -9,7 +9,7 @@ function TopicPage(): React.JSX.Element {
   const dispatch = useAppDispatch();
   useEffect(() => {
     void dispatch(fetchForums());
-  });
+  },[] );
   return (
     <>
       <div>TopicPage</div>
