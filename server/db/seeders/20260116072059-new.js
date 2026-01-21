@@ -179,6 +179,8 @@ module.exports = {
         workingHours: 'Круглосуточно',
         image:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ0CdzMMMjgyquZvhAl3_yAeYKpH_qdMf7aw&s',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: 'Flex Studio',
@@ -193,6 +195,8 @@ module.exports = {
         workingHours: 'Пн-Вс: 07:00-23:00',
         image:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzR9OHgnX3ysuBNtqKIK8G_JLAMKdQHjA3wg&s',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: 'CrossFit Arena',
@@ -207,6 +211,8 @@ module.exports = {
         workingHours: 'Пн-Пт: 06:00-22:00, Сб: 08:00-20:00, Вс: 09:00-18:00',
         image:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHAb_TEbxK0FfkxppH2vZRO_5vwOxuGJ_eiQ&s',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: 'Iron Will',
@@ -221,6 +227,8 @@ module.exports = {
         workingHours: 'Пн-Вс: 05:00-01:00',
         image:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxKbA-4utcJV7K3E_QfH4vVhKujog8WJZ5ag&s',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: 'Zenith Fitness',
@@ -235,6 +243,8 @@ module.exports = {
         workingHours: 'Пн-Вс: 06:00-24:00',
         image:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjWdbVTYi_RfKBH1P9OMrM0iTg_Z6bZbn0EQ&s',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: 'Urban Athlete',
@@ -249,6 +259,8 @@ module.exports = {
         workingHours: 'Пн-Пт: 06:00-23:00, Сб-Вс: 08:00-22:00',
         image:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqWcv7lmy9cN3gILi8agDGTdZcHV1GvTX7rQ&s',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: 'Hercules Gym',
@@ -263,6 +275,8 @@ module.exports = {
         workingHours: 'Пн-Вс: 07:00-23:00',
         image:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN2blfrwOD98mI70krBTrX2TZOkUiqxRGhSg&s',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         name: 'Elite Fitness Club',
@@ -277,6 +291,8 @@ module.exports = {
         workingHours: 'Пн-Вс: 06:00-24:00',
         image:
           'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFz7qajsqM35u-pds4tJfE18CN9pHzHmFW4A&s',
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
     ]);
     const trainers = [
@@ -349,7 +365,7 @@ module.exports = {
         },
         {
           rate: 5,
-          userId: 4,
+          userId: 1,
           trainerId: null,
           content:
             'Лучший зал в районе! Профессиональное оборудование, отличная вентиляция, дружелюбный персонал.',
