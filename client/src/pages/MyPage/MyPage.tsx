@@ -8,9 +8,8 @@ import { getImageUrl, handleImageError } from '@/shared/lib/imageUtils';
 import axiosInstance, { setAccessToken } from '@/shared/api/axiosInstance';
 import { useAuth } from '@/shared/lib/useAuth';
 import EditProfileModal from '@/features/EditProfileModal/EditProfileModal';
-import TrainingProgramModal, {
-  TrainingProgramFormData,
-} from '@/features/TrainingProgramModal/TrainingProgramModal';
+import type { TrainingProgramFormData } from '@/features/TrainingProgramModal/TrainingProgramModal';
+import TrainingProgramModal from '@/features/TrainingProgramModal/TrainingProgramModal';
 import {
   fetchTrainerProgramsThunk,
   createProgramThunk,
@@ -175,17 +174,17 @@ function ProfilePage(): React.JSX.Element {
         <div className="profile-header">
           <h1 className="profile-title">Профиль {isTrainer ? 'тренера' : 'пользователя'}</h1>
           <div className={`profile-badge ${profileType}`}>
-            {isTrainer ? '🏋️ Тренер' : '👤 Пользователь'}
+            {isTrainer ? `🏋️${profileData.name} ` : `👤 ${profileData.name}`}
           </div>
         </div>
 
         <div className="profile-section">
           <h2 className="section-title">Основная информация</h2>
           <div className="info-grid">
-            <div className="info-item">
+            {/* <div className="info-item">
               <span className="info-label">ID:</span>
               <span className="info-value">{profileData.id}</span>
-            </div>
+            </div> */}
             <div className="info-item">
               <span className="info-label">Имя:</span>
               <span className="info-value">{profileData.name}</span>
@@ -327,7 +326,7 @@ function ProfilePage(): React.JSX.Element {
       <EditProfileModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        profileType={profileType as 'user' | 'trainer'}
+        profileType={profileType!}
         currentData={profileData}
       />
 
