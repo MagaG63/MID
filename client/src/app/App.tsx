@@ -43,6 +43,7 @@ function App(): React.JSX.Element {
           {/* Публичные маршруты */}
           <Route path="/" element={<MainPage />} />
           <Route path="/forum" element={<TopicPage />} />
+          <Route path="/fitness/:id" element={<FitnessPage />} />
 
           {/* Маршруты только для НЕ авторизованных */}
           <Route
