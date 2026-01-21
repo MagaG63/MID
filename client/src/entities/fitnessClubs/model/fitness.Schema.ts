@@ -12,6 +12,6 @@ export const fitnessSchema = z.object({
   priceRange: z.string(),
   workingHours: z.string(),
   image: z.string(),
-  createdAt: z.string().optional(),
-  updatedAt: z.string().optional(),
+  createdAt: z.string().nullable().optional(),
+  updatedAt: z.string().nullable().optional(),
 });
