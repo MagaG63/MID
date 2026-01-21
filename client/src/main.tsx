@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client';
 import App from './app/App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@/shared/styles/main.css';
+import '@/shared/styles/components.css';
 import { Provider } from 'react-redux';
 import { store } from './app/store/store';
 import { checkAuthOnLoad } from '@/shared/lib/authInit';
@@ -11,7 +12,7 @@ import { checkAuthOnLoad } from '@/shared/lib/authInit';
 // Создаем функцию для инициализации авторизации
 const initApp = async () => {
   console.log('App initialization...');
-  
+
   // ✅ ИСПРАВЛЕНИЕ: Вызываем проверку авторизации при загрузке
   try {
     await checkAuthOnLoad();
