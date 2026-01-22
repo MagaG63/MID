@@ -6,9 +6,12 @@ import {
   Param,
   Delete,
   Put,
+  UseGuards,
+  Req,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 
 interface UserResponse {
   id: number;
@@ -18,7 +21,7 @@ interface UserResponse {
   updatedAt: Date;
 }
 
-@Controller('api/user')
+@Controller('user')
 export class UserController {
   constructor(private userService: UserService) {}
 
@@ -40,6 +43,41 @@ export class UserController {
     const { password, ...userResponse } = userData;
 
     return { user: userResponse as UserResponse };
+  }
+
+  // Обновление профиля текущего пользователя (ДОЛЖНО БЫТЬ ПЕРЕД :id роутами!)
+  @UseGuards(JwtAuthGuard)
+  @Put('profile')
+  async updateProfile(
+    @Req() req: any,
+    @Body() updateData: { name: string; email: string },
+  ): Promise<{ user: UserResponse }> {
+    try {
+      console.log('🔄 UPDATE PROFILE REQUEST:', {
+        headers: req.headers.authorization ? 'Token present' : 'No token',
+        user: req.user,
+        body: updateData,
+      });
+
+      // Получаем ID пользователя из JWT токена (используется 'sub' в payload)
+      const userId = req.user?.sub || req.user?.id;
+      
+      if (!userId) {
+        console.error('❌ No userId found in request');
+        throw new Error('User not authenticated');
+      }
+
+      console.log('🔄 Updating user profile:', { userId, updateData });
+
+      const updatedUser = await this.userService.updateUser(userId, updateData);
+      
+      console.log('✅ User profile updated:', updatedUser);
+      
+      return { user: updatedUser };
+    } catch (error) {
+      console.error('❌ UPDATE PROFILE ERROR:', error);
+      throw error;
+    }
   }
 
   // Дополнительные методы если нужны
@@ -75,20 +113,4 @@ export class UserController {
     return { message: 'User deleted successfully' };
   }
 
-  // Обновление профиля текущего пользователя
-  @Put('profile')
-  async updateProfile(
-    @Body() updateData: { name: string; email: string },
-  ): Promise<{ user: UserResponse }> {
-    // TODO: Получить ID из JWT токена
-    // Пока используем email для поиска
-    const user = await this.userService.findByEmail(updateData.email);
-
-    if (!user) {
-      throw new Error('User not found');
-    }
-
-    const updatedUser = await this.userService.updateUser(user.id, updateData);
-    return { user: updatedUser };
-  }
 }

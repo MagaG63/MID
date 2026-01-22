@@ -83,6 +83,15 @@ export default function NavBar(): React.JSX.Element {
             <span className="nav-label">Форум</span>
           </Link>
 
+          <Link to="/laboratory" className={`nav-link ${isActive('/laboratory') ? 'active' : ''}`}>
+            <div className="nav-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7 2v2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-1V2h-2v2H9V2H7zm0 6h10v10H7V8z" />
+              </svg>
+            </div>
+            <span className="nav-label">Лаборатории</span>
+          </Link>
+
           {isLoggedIn && (
             <>
               {role === 'user' && (

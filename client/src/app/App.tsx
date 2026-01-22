@@ -15,6 +15,7 @@ const AnalizPage = lazy(() => import('@/pages/Analiz/ui/AnalizPage'));
 const MyPage = lazy(() => import('@/pages/MyPage/MyPage'));
 const TrainersListPage = lazy(() => import('@/pages/Trainers/TrainersListPage'));
 const TrainerProfilePage = lazy(() => import('@/pages/Trainers/TrainerProfilePage'));
+const LaboratoryPage = lazy(() => import('@/pages/Laboratory/LaboratoryPage'));
 
 // Loading компонент
 const PageLoader = () =>
@@ -44,6 +45,7 @@ function App(): React.JSX.Element {
           <Route path="/" element={<MainPage />} />
           <Route path="/forum" element={<TopicPage />} />
           <Route path="/fitness/:id" element={<FitnessPage />} />
+          <Route path="/laboratory" element={<LaboratoryPage />} />
 
           {/* Маршруты только для НЕ авторизованных */}
           <Route

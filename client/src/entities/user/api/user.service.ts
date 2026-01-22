@@ -6,7 +6,7 @@ import axiosInstance, { setAccessToken } from '@/shared/api/axiosInstance';
 class UserService {
   static async getUsers(): Promise<UserType[]> {
     try {
-      const response = await axios.get('/api/api/user/all');
+      const response = await axios.get('/api/user/all');
       return userScheme.array().parse(response.data.users);
     } catch (error) {
       console.log(error);

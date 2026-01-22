@@ -1,4 +1,4 @@
-// ✅ Эндпоинты: /api/auth/*, /api/user/*, /api/trainer/*, /api/food-diary/*, /api/training-program/*, /api/trainer-reviews/*
+// ✅ Эндпоинты: /api/auth/*, /api/user/*, /api/trainer/*, /api/food-diary/*, /api/training-program/*, /api/trainer-reviews/*, /api/laboratory/*
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { User } from './user/user.model';
@@ -8,6 +8,7 @@ import { Trainer } from './trainer/trainer.model';
 import { Forum } from './forum/forum.model';
 import { TrainingProgram } from './training-program/training-program.model';
 import { TrainerReview } from './trainer-reviews/trainer-review.model';
+import { Laboratory } from './laboratory/laboratory.model';
 import { UserModule } from './user/user.module';
 import { TrainerModule } from './trainer/trainer.module';
 import { AuthModule } from './auth/auth.module';
@@ -16,6 +17,7 @@ import { GymsReviewsModule } from './gyms-reviews/gyms-reviews.module';
 import { FoodDiaryModule } from './food-diary/food-diary.module';
 import { TrainingProgramModule } from './training-program/training-program.module';
 import { TrainerReviewModule } from './trainer-reviews/trainer-review.module';
+import { LaboratoryModule } from './laboratory/laboratory.module';
 import dotenv from 'dotenv';
 import { ForumModule } from './forum/forum.module';
 import { CommentModule } from './comment/comment.module';
@@ -37,6 +39,7 @@ dotenv.config();
         TrainingProgram,
         TrainerReview,
         Comment,
+        Laboratory,
       ],
       logging: false,
     }),
@@ -52,6 +55,7 @@ dotenv.config();
     CommentModule,
     TrainingProgramModule,
     TrainerReviewModule,
+    LaboratoryModule,
   ],
 })
 export class AppModule {}

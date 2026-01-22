@@ -6,6 +6,8 @@ import forumsReducer from '@/entities/forum/model/forum.slice';
 import foodDiaryReducer from '@/entities/food-diary/model/foodDiary.Slice';
 import { trainingProgramReducer } from '@/entities/training-program';
 import commentReducer from '@/entities/comments/model/comment.slice';
+import trainerReviewReducer from '@/entities/trainer-reviews/model/trainer-review.slice';
+import laboratoryReducer from '@/entities/laboratory/model/laboratory.slice';
 
 export const store = configureStore({
   reducer: {
@@ -16,6 +18,8 @@ export const store = configureStore({
     foodDiary: foodDiaryReducer,
     trainingProgram: trainingProgramReducer,
     comments: commentReducer,
+    trainerReview: trainerReviewReducer,
+    laboratory: laboratoryReducer,
   },
 });
 
