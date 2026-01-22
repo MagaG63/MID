@@ -175,7 +175,7 @@ export default function EditProfileModal({
             />
           </div>
 
-          <div className="form-group">
+          {/* <div className="form-group">
             <label htmlFor="email">Email *</label>
             <input
               id="email"
@@ -186,7 +186,7 @@ export default function EditProfileModal({
               onChange={handleChange}
               required
             />
-          </div>
+          </div> */}
 
           {profileType === 'trainer' && (
             <>

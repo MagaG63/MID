@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks';
 import { addComment, fetchComment } from '@/entities/comments/model/comment.thunks';
 import { fetchUsers } from '@/entities/user/model/user.thunk';
 import { fetchTrainersThunk } from '@/entities/trainer/model/trainer.thunk';
+import { useNavigate } from 'react-router';
 
 type Props = {
   topic: ForumType;
@@ -21,6 +22,7 @@ function ModalForum({ setShow, topic, show }: Props): React.JSX.Element {
   const trainer = useAppSelector((store) => store.trainer.authenticatedTrainer);
   const users = useAppSelector((store) => store.user.Users);
   const trainers = useAppSelector((store) => store.trainer.trainers);
+  const navigate = useNavigate()
 
   console.log('Users:', users);
   console.log('Trainers:', trainers);
@@ -58,6 +60,8 @@ function ModalForum({ setShow, topic, show }: Props): React.JSX.Element {
       } catch (error) {
         console.error('Ошибка при добавлении комментария:', error);
       }
+    }else {
+      navigate('/login')
     }
   };
 
