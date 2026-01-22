@@ -113,4 +113,23 @@ export class UserController {
     return { message: 'User deleted successfully' };
   }
 
+<<<<<<< HEAD
+=======
+  // Обновление профиля текущего пользователя
+  // @Put('profile')
+  // async updateProfile(
+  //   @Body() updateData: { name: string; email: string },
+  // ): Promise<{ user: UserResponse }> {
+  //   // TODO: Получить ID из JWT токена
+  //   // Пока используем email для поиска
+  //   const user = await this.userService.findByEmail(updateData.email);
+
+  //   if (!user) {
+  //     throw new Error('User not found');
+  //   }
+
+  //   const updatedUser = await this.userService.updateUser(user.id, updateData);
+  //   return { user: updatedUser };
+  // }
+>>>>>>> main
 }

@@ -96,164 +96,102 @@ module.exports = {
     //   },
     // ]);
 
+
     await queryInterface.bulkInsert('FitnessClubs', [
       {
-        name: 'ddxFitness',
+        name: 'Spirit. Fitness',
         description:
-          'Современный фитнес-клуб с профессиональным оборудованием и опытными тренерами. Специализируемся на силовых тренировках и функциональном фитнесе.',
-        address: 'ул. Спортивная, 15, Москва',
-        phone: '+7 (495) 123-45-67',
-        email: 'info@ddxfitness.ru',
-        website: 'www.ddxfitness.ru',
-        rating: 4.8,
-        priceRange: '3000-5000 ₽/месяц',
-        workingHours: 'Пн-Вс: 06:00-24:00',
-        image:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA9j9er1aBd4ZaMp6C5UYWIQvNssrz80JuNg&s',
+          'Современный фитнес-клуб с профессиональным оборудованием и круглосуточным режимом работы. Расположен в удобном торговом центре с отличной транспортной доступностью.',
+        address: 'ул. Вавилова, 3, ТРЦ Гагаринский, Москва, 119334',
+        phone: '8 (495) 432-66-31',
+        email: 'rio@spiritfit.ru',
+        website:
+          'https://spiritfit.ru/clubs/gagarinskiy/?utm_source=google&utm_medium=maps&utm_campaign=msk',
+        rating: 4.4,
+        priceRange: '4000',
+        workingHours: 'Круглосуточно',
+        image: 'https://spiritfit.ru/images/logo_white.svg',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'MyFitLab',
+        name: 'BIOSFERA CLUB fitness&spa',
         description:
-          'Инновационный фитнес-клуб с научным подходом к тренировкам. Индивидуальные программы и современные технологии для достижения ваших целей.',
-        address: 'пр. Фитнес, 42, Москва',
-        phone: '+7 (495) 987-65-43',
-        email: 'hello@myfitlab.ru',
-        website: 'www.myfitlab.ru',
+          'Премиальный фитнес-клуб с спа-зоной, предлагающий комплексный подход к здоровью и красоте. Современное оборудование и профессиональные программы тренировок.',
+        address: 'Малая Калужская ул., 15, стр.4, Москва, 119071',
+        phone: '8 (499) 877-52-75',
+        email: 'info@biosfera-club.ru',
+        website: 'https://biosfera-club.ru/',
         rating: 4.6,
-        priceRange: '4000-7000 ₽/месяц',
-        workingHours: 'Пн-Пт: 06:00-23:00, Сб-Вс: 08:00-22:00',
+        priceRange: '6000',
+        workingHours: 'Открыто · Закроется в 23:00',
         image:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGn42rRG_VR324IMIEMlk4OPPQuAzI-sGgew&s',
+          'https://biosfera-club.ru/upload/CMedc2/fc3/znlrwh1qk08gmcxwtpnx7gy2f9nywxvg/logo_spa.png',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'PowerHouse Gym',
+        name: 'REBOOT EAST. Fitness',
         description:
-          'Культовый зал для серьезных атлетов. Тяжелое оборудование, атмосфера чемпионатов и сообщество единомышленников.',
-        address: 'ул. Железная, 28, Москва',
-        phone: '+7 (495) 555-78-90',
-        email: 'contact@powerhouse.ru',
-        website: 'www.powerhousegym.ru',
+          'Инновационный фитнес-клуб с высоким рейтингом и современным подходом к тренировкам. Расположен в бизнес-центре с удобной парковкой и отличными отзывами клиентов.',
+        address: 'Рива, Шлюзовая наб., 4, БЦ Россо, Москва, 115114',
+        phone: '8 (499) 216-81-39',
+        email: 'brand-manager@reboot.ru',
+        website:
+          'https://reboot.ru/?utm_source=googlemaps&utm_medium=organic&utm_campaign=reboot_east',
         rating: 4.9,
-        priceRange: '3500-6000 ₽/месяц',
+        priceRange: '5000',
+        workingHours: 'Закроется в 22:30',
+        image:
+          'https://reboot.ru/media/galleries/photos/2025/01/17/DSC06484_copy.jpg.2048x1024_q90.webp',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'LOMOV GYM',
+        description:
+          'Круглосуточный тренажерный зал для серьезных атлетов. Профессиональное оборудование, атмосфера настоящего спорта и возможность тренироваться в любое время суток.',
+        address: 'Автозаводская ул., 18, Москва, 115280',
+        phone: '8 (495) 150-85-90',
+        email: 'sales@lomovgym.ru',
+        website: 'https://lomovgym.ru/',
+        rating: 4.6,
+        priceRange: '3500',
         workingHours: 'Круглосуточно',
         image:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ0CdzMMMjgyquZvhAl3_yAeYKpH_qdMf7aw&s',
+          'https://avatars.mds.yandex.net/get-altay/2813737/2a000001725221614d6ee3586c9e44081e0b/XL',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'Flex Studio',
+        name: 'IDOL GYM',
         description:
-          'Студия групповых тренировок премиум-класса. Пилатес, йога, стретчинг и танцевальные направления в уютной атмосфере.',
-        address: 'ул. Гибкая, 5, Москва',
-        phone: '+7 (495) 222-33-44',
-        email: 'flex@studio.ru',
-        website: 'www.flexstudio.ru',
-        rating: 4.7,
-        priceRange: '5000-8000 ₽/месяц',
-        workingHours: 'Пн-Вс: 07:00-23:00',
-        image:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzR9OHgnX3ysuBNtqKIK8G_JLAMKdQHjA3wg&s',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: 'CrossFit Arena',
-        description:
-          'Официальный бокс CrossFit с сертифицированными тренерами. Функциональные тренировки, сообщество и соревновательный дух.',
-        address: 'пр. Выносливости, 12, Москва',
-        phone: '+7 (495) 777-12-34',
-        email: 'arena@crossfit.ru',
-        website: 'www.crossfitarena.ru',
-        rating: 4.8,
-        priceRange: '4500-7000 ₽/месяц',
-        workingHours: 'Пн-Пт: 06:00-22:00, Сб: 08:00-20:00, Вс: 09:00-18:00',
-        image:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHAb_TEbxK0FfkxppH2vZRO_5vwOxuGJ_eiQ&s',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: 'Iron Will',
-        description:
-          'Тренажерный зал для пауэрлифтеров и бодибилдеров. Профессиональное оборудование для силового тренинга.',
-        address: 'ул. Стальная, 33, Москва',
-        phone: '+7 (495) 444-55-66',
-        email: 'iron@will.ru',
-        website: 'www.ironwillgym.ru',
+          'Современный фитнес-клуб с качественным оборудованием и профессиональными тренерами. Удобное расположение и комфортная атмосфера для достижения ваших фитнес-целей.',
+        address: 'Нагатинская ул., 1, с 21, Москва, 117105',
+        phone: '8 (495) 120-08-06',
+        email: 'info@idolgym.ru',
+        website: 'https://idolgym.ru/',
         rating: 4.5,
-        priceRange: '2500-4000 ₽/месяц',
-        workingHours: 'Пн-Вс: 05:00-01:00',
+        priceRange: '4000',
+        workingHours: 'Закроется в 23:00',
         image:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxKbA-4utcJV7K3E_QfH4vVhKujog8WJZ5ag&s',
+          'https://static.tildacdn.com/tild6339-6265-4432-b134-616666663335/_.svg',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: 'Zenith Fitness',
+        name: 'X-way fitness and beauty',
         description:
-          'Фитнес-клуб с бассейном и спа-зоной. Комплексные программы для здоровья и восстановления.',
-        address: 'пр. Оздоровительный, 18, Москва',
-        phone: '+7 (495) 888-99-00',
-        email: 'zenith@fitness.ru',
-        website: 'www.zenithfitness.ru',
+          'Премиальная студия фитнеса и красоты с высоким рейтингом. Сочетание эффективных тренировок и процедур красоты в одном месте для комплексного подхода к здоровью.',
+        address: 'ул. Серпуховский Вал, 21 к1, Москва, 115191',
+        phone: '8 (495) 432-66-31',
+        email: 'hello@xway.studio',
+        website: 'https://xway.studio/',
         rating: 4.9,
-        priceRange: '6000-10000 ₽/месяц',
-        workingHours: 'Пн-Вс: 06:00-24:00',
+        priceRange: '7000',
+        workingHours: 'Закроется в 23:00',
         image:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjWdbVTYi_RfKBH1P9OMrM0iTg_Z6bZbn0EQ&s',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: 'Urban Athlete',
-        description:
-          'Современный мультифункциональный зал с акцентом на функциональный тренинг и воркаут.',
-        address: 'ул. Урбанная, 7, Москва',
-        phone: '+7 (495) 333-44-55',
-        email: 'urban@athlete.ru',
-        website: 'www.urbanathlete.ru',
-        rating: 4.6,
-        priceRange: '3500-5500 ₽/месяц',
-        workingHours: 'Пн-Пт: 06:00-23:00, Сб-Вс: 08:00-22:00',
-        image:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqWcv7lmy9cN3gILi8agDGTdZcHV1GvTX7rQ&s',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: 'Hercules Gym',
-        description:
-          'Классический тренажерный зал для начинающих и продвинутых атлетов. Демократичные цены и дружеская атмосфера.',
-        address: 'ул. Геркулеса, 21, Москва',
-        phone: '+7 (495) 666-77-88',
-        email: 'hercules@gym.ru',
-        website: 'www.herculesgym.ru',
-        rating: 4.4,
-        priceRange: '2000-3500 ₽/месяц',
-        workingHours: 'Пн-Вс: 07:00-23:00',
-        image:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN2blfrwOD98mI70krBTrX2TZOkUiqxRGhSg&s',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: 'Elite Fitness Club',
-        description:
-          'Премиальный клуб с персональным подходом. Эксклюзивные программы, диетологи и физиотерапевты.',
-        address: 'ул. Премиум, 1, Москва',
-        phone: '+7 (495) 999-00-11',
-        email: 'elite@fitness.ru',
-        website: 'www.elitefitness.ru',
-        rating: 4.9,
-        priceRange: '8000-15000 ₽/месяц',
-        workingHours: 'Пн-Вс: 06:00-24:00',
-        image:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFz7qajsqM35u-pds4tJfE18CN9pHzHmFW4A&s',
+          'https://lh3.googleusercontent.com/p/AF1QipM-UIzlVd_T-vt6ofrQGgWNXnGiHAUOYaFfiDCT=s1360-w1360-h1020-rw',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -287,68 +225,87 @@ module.exports = {
     ];
     await queryInterface.bulkInsert('Trainers', trainers, {});
 
-    // await queryInterface.bulkInsert(
-    //   'GymReviews',
-    //   [
-    //     {
-    //       rate: 5,
-    //       userId: null,
-    //       trainerId: 1,
-    //       content:
-    //         'Отличный зал! Новое оборудование, чисто, просторно. Тренируюсь уже 3 месяца, результат на лицо.',
-    //       gymId: 1,
-    //       like: null,
-    //       dislike: null,
-    //       createdAt: new Date(),
-    //       updatedAt: new Date(),
-    //     },
-    //     {
-    //       rate: 4,
-    //       userId: 2,
-    //       trainerId: null,
-    //       content:
-    //         'Хороший зал для кардио и групповых занятий. Штанги могли бы быть поновее, но в целом всё устраивает.',
-    //       gymId: 1,
-    //       like: 'Кардио зона',
-    //       dislike: 'Старые штанги',
-    //       createdAt: new Date(),
-    //       updatedAt: new Date(),
-    //     },
-    //     {
-    //       rate: 3,
-    //       userId: 3,
-    //       trainerId: null,
-    //       content:
-    //         'Средний зал. Очереди на тренажёры в вечернее время, душ только 2 кабинки на всех.',
-    //       gymId: 2,
-    //       like: null,
-    //       dislike: 'Мало душевых',
-    //       createdAt: new Date(),
-    //       updatedAt: new Date(),
-    //     },
-    //     {
-    //       rate: 5,
-    //       userId: 1,
-    //       trainerId: null,
-    //       content:
-    //         'Лучший зал в районе! Профессиональное оборудование, отличная вентиляция, дружелюбный персонал.',
-    //       gymId: 2,
-    //       like: 'Всё',
-    //       dislike: null,
-    //       createdAt: new Date(),
-    //       updatedAt: new Date(),
-    //     },
-    //   ],
-    //   {},
-    // );
+    // Добавляем данные в таблицу Gyms
+    await queryInterface.bulkInsert('Gyms', [
+      {
+        name: 'PowerGym',
+        contact: '+7 (495) 123-45-67',
+        price: '3000 ₽/месяц',
+        desc: 'Современный тренажерный зал с профессиональным оборудованием',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'FitZone',
+        contact: '+7 (495) 987-65-43',
+        price: '4000 ₽/месяц',
+        desc: 'Фитнес-клуб премиум класса с бассейном и сауной',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]);
+
+    await queryInterface.bulkInsert(
+      'GymReviews',
+      [
+        {
+          rate: 5,
+          userId: null,
+          trainerId: 1,
+          content:
+            'Отличный зал! Новое оборудование, чисто, просторно. Тренируюсь уже 3 месяца, результат на лицо.',
+          gymId: 1,
+          like: null,
+          dislike: null,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          rate: 4,
+          userId: 2,
+          trainerId: null,
+          content:
+            'Хороший зал для кардио и групповых занятий. Штанги могли бы быть поновее, но в целом всё устраивает.',
+          gymId: 1,
+          like: 'Кардио зона',
+          dislike: 'Старые штанги',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          rate: 3,
+          userId: 3,
+          trainerId: null,
+          content:
+            'Средний зал. Очереди на тренажёры в вечернее время, душ только 2 кабинки на всех.',
+          gymId: 2,
+          like: null,
+          dislike: 'Мало душевых',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          rate: 5,
+          userId: 1,
+          trainerId: null,
+          content:
+            'Лучший зал в районе! Профессиональное оборудование, отличная вентиляция, дружелюбный персонал.',
+          gymId: 2,
+          like: 'Всё',
+          dislike: null,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],
+      {},
+    );
   },
 
   async down(queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    await queryInterface.bulkDelete('Users', null, {});
+    await queryInterface.bulkDelete('Trainers', null, {});
+    await queryInterface.bulkDelete('FitnessClubs', null, {});
+    await queryInterface.bulkDelete('Gyms', null, {});
+    await queryInterface.bulkDelete('GymReviews', null, {});
   },
 };

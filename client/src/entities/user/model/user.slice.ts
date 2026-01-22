@@ -5,6 +5,9 @@ import { fetchUsers, loginUserThunk, registerUserThunk, updateUserThunk } from '
 
 export const userAdapter = createEntityAdapter<UserType>({
   selectId: (user) => user.id,
+
+
+  
 });
 
 const initialState = userAdapter.getInitialState<{
