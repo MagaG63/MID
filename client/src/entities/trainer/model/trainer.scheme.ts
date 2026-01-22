@@ -9,7 +9,7 @@ export const trainerRegistSchema = z.object({
   qualificationImages: z.array(z.string()),
 });
 
-// ✅ ДОБАВЬТЕ ЭТИ СТРОКИ
+
 export type TrainerRegist = z.infer<typeof trainerRegistSchema>;
 
 export const trainerScheme = z

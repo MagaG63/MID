@@ -34,6 +34,13 @@ export class Comment extends Model<Comment> {
   author_id: number;
 
   @Column({
+    type: DataType.ENUM('user', 'trainer'),
+    allowNull: false,
+    defaultValue: 'user',
+  })
+  author_type: string;
+
+  @Column({
     type: DataType.TEXT,
     allowNull: false,
   })
