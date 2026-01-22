@@ -5,6 +5,7 @@ import './ModalForum.css';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks';
 import { addComment, fetchComment } from '@/entities/comments/model/comment.thunks';
 import { fetchUsers } from '@/entities/user/model/user.thunk';
+import { fetchTrainersThunk } from '@/entities/trainer/model/trainer.thunk';
 
 type Props = {
   topic: ForumType;
@@ -17,25 +18,39 @@ function ModalForum({ setShow, topic, show }: Props): React.JSX.Element {
   const dispatch = useAppDispatch();
   const comments = useAppSelector((store) => store.comments.comments);
   const user = useAppSelector((store) => store.user.currentUser);
+  const trainer = useAppSelector((store) => store.trainer.authenticatedTrainer);
   const users = useAppSelector((store) => store.user.Users);
-  console.log(users);
+  const trainers = useAppSelector((store) => store.trainer.trainers);
+
+  console.log('Users:', users);
+  console.log('Trainers:', trainers);
+
   useEffect(() => {
     void dispatch(fetchComment());
     void dispatch(fetchUsers());
-  }, []);
+    void dispatch(fetchTrainersThunk());
+  }, [dispatch]);
 
   const handleClose = (): void => setShow(false);
 
   const handleCommentSubmit = async (): Promise<void> => {
-    if (user && data.trim()) {
+    // Проверяем, авторизован ли пользователь или тренер
+    const currentUser = user || trainer;
+
+    if (currentUser && data.trim()) {
+      // Определяем тип автора
+      const authorType = user ? 'user' : 'trainer';
+
       const response = {
         forum_id: topic.id,
-        author_id: user.id,
-        content: data,
+        author_id: currentUser.id,
+        author_type: authorType,
+        content: data.trim(),
         parent_id: undefined,
         likes_count: undefined,
         status: undefined,
       };
+
       try {
         await dispatch(addComment(response));
         setData(''); // Очищаем поле ввода после успешной отправки
@@ -44,6 +59,16 @@ function ModalForum({ setShow, topic, show }: Props): React.JSX.Element {
         console.error('Ошибка при добавлении комментария:', error);
       }
     }
+  };
+
+  // Функция для получения имени автора комментария
+  const getAuthorName = (comment: any): string => {
+    if (comment.author_type === 'trainer') {
+      const trainer = trainers.find((t) => t.id === comment.author_id);
+      return trainer?.name || 'Тренер';
+    }
+    const user = users.find((u) => u.id === comment.author_id);
+    return user?.name || 'Пользователь';
   };
 
   return (
@@ -145,17 +170,18 @@ function ModalForum({ setShow, topic, show }: Props): React.JSX.Element {
             {comments.map(
               (comment) =>
                 comment.forum_id === topic.id && (
-                  <>
-                    <div className="comment-item">
-                      <div className="d-flex justify-content-between align-items-start mb-2">
-                        <strong className="text-primary">
-                          {users[comment.author_id - 1]?.name}
-                        </strong>
-                        <small className="text-muted">{comment.createdAt}</small>
-                      </div>
-                      <p className="mb-0">{comment.content}</p>
+                  <div key={comment.id} className="comment-item">
+                    <div className="d-flex justify-content-between align-items-start mb-2">
+                      <strong className="text-primary">
+                        {getAuthorName(comment)}
+                        {comment.author_type === 'trainer' && (
+                          <span className="badge bg-success ms-2">Тренер</span>
+                        )}
+                      </strong>
+                      <small className="text-muted">{comment.createdAt}</small>
                     </div>
-                  </>
+                    <p className="mb-0">{comment.content}</p>
+                  </div>
                 ),
             )}
           </div>

@@ -59,7 +59,7 @@ function FitnessPage(): React.JSX.Element {
             <p>📞 {club.phone}</p>
             <p>✉️ {club.email}</p>
             <a
-              href={`https://${club.website}`}
+              href={club.website}
               className="club-website"
               target="_blank"
               rel="noopener noreferrer"
@@ -111,15 +111,15 @@ function FitnessPage(): React.JSX.Element {
             <div className="pricing-grid">
               <div className="price-item">
                 <span className="price-label">Месяц</span>
-                <span className="price-value">3500 ₽</span>
+                <span className="price-value">{club.priceRange}</span>
               </div>
               <div className="price-item">
                 <span className="price-label">Квартал</span>
-                <span className="price-value">9500 ₽</span>
+                <span className="price-value">{`${Math.round(Number(club.priceRange) * 2.3)}руб`}</span>
               </div>
               <div className="price-item">
                 <span className="price-label">Год</span>
-                <span className="price-value">32000 ₽</span>
+                <span className="price-value">{`${Number(club.priceRange) * 9}руб`}</span>
               </div>
               <div className="price-item">
                 <span className="price-label">Пробное</span>

@@ -1,5 +1,4 @@
-// TypeScript интерфейсы для системы профилей тренеров
-// Требования: 5.1, 5.2, 5.3, 5.4
+
 
 export interface FileInfo {
   id: string;

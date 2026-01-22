@@ -4,6 +4,7 @@ export const commentSchema = z.object({
   id: z.number(),
   forum_id: z.number(),
   author_id: z.number(),
+  author_type: z.enum(['user', 'trainer']),
   content: z.string(),
   parent_id: z.number().nullable(),
   likes_count: z.number(),

@@ -24,7 +24,7 @@ function FitnessClubCard({ fitness }: FitnessCardProps): React.JSX.Element {
         <div className="card-info">
           <div className="card-header">
             <h3 className="card-name">{fitness.name}</h3>
-            <span className="card-price">{fitness.priceRange}</span>
+            <span className="card-price">{`${fitness.priceRange} руб`}</span>
           </div>
 
           <p className="card-address">📍 {fitness.address}</p>
