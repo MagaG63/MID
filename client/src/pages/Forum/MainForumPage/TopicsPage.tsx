@@ -10,7 +10,7 @@ function TopicPage(): React.JSX.Element {
   
   useEffect(() => {
     void dispatch(fetchForums());
-  }, [dispatch]); // Добавляем зависимость dispatch
+  }, [dispatch]);
   
   return (
     <>

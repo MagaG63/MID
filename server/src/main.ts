@@ -43,4 +43,4 @@ async function bootstrap() {
   console.log('✅ Сервер запущен на http://localhost:3000');
   console.log('📁 Статические файлы: http://localhost:3000/uploads/');
 }
-// bootstrap();
+bootstrap();
