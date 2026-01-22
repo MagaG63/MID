@@ -8,6 +8,15 @@ type LoginCredentials = {
   role?: string;
 };
 
+export const fetchUsers = createAsyncThunk<UserType[]>('user/fetch', async () => {
+  try {
+    const users = await UserService.getUsers();
+    return users;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 export const loginUserThunk = createAsyncThunk<UserType, LoginCredentials, { rejectValue: string }>(
   'user/login',
   async (credentials, { rejectWithValue }) => {

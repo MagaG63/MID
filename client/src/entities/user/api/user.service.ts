@@ -1,8 +1,19 @@
+import axios from 'axios';
 import { userScheme } from '../model/user.scheme';
 import type { UserType, UserRegist } from '../model/user.type';
 import axiosInstance, { setAccessToken } from '@/shared/api/axiosInstance';
 
 class UserService {
+  static async getUsers(): Promise<UserType[]> {
+    try {
+      const response = await axios.get('/api/api/user/all');
+      return userScheme.array().parse(response.data.users);
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+
   static async createUser(data: UserRegist): Promise<UserType> {
     try {
       console.log('🚀 USER REGISTER -> /api/auth/register', data);

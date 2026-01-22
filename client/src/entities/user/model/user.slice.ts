@@ -1,17 +1,19 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import type { UserType } from './user.type';
-import { loginUserThunk, registerUserThunk, updateUserThunk } from './user.thunk';
+import { fetchUsers, loginUserThunk, registerUserThunk, updateUserThunk } from './user.thunk';
 
 export const userAdapter = createEntityAdapter<UserType>({
   selectId: (user) => user.id,
 });
 
 const initialState = userAdapter.getInitialState<{
+  Users: UserType[];
   currentUser: UserType | null;
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
 }>({
+  Users: [],
   currentUser: null,
   status: 'idle',
   error: null,
@@ -31,6 +33,9 @@ export const userSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(fetchUsers.fulfilled, (state, action) => {
+      state.Users = action.payload;
+    });
     builder
       // Login
       .addCase(loginUserThunk.pending, (state) => {
@@ -44,7 +49,7 @@ export const userSlice = createSlice({
       })
       .addCase(loginUserThunk.rejected, (state, action) => {
         state.status = 'failed';
-        state.error = action.payload as string;
+        state.error = action.payload!;
         state.currentUser = null;
       })
       // Register
@@ -59,7 +64,7 @@ export const userSlice = createSlice({
       })
       .addCase(registerUserThunk.rejected, (state, action) => {
         state.status = 'failed';
-        state.error = action.payload as string;
+        state.error = action.payload!;
       })
       // Update
       .addCase(updateUserThunk.pending, (state) => {
@@ -73,7 +78,7 @@ export const userSlice = createSlice({
       })
       .addCase(updateUserThunk.rejected, (state, action) => {
         state.status = 'failed';
-        state.error = action.payload as string;
+        state.error = action.payload!;
       });
   },
 });
