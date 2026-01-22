@@ -287,6 +287,26 @@ module.exports = {
     ];
     await queryInterface.bulkInsert('Trainers', trainers, {});
 
+    // Добавляем данные в таблицу Gyms
+    await queryInterface.bulkInsert('Gyms', [
+      {
+        name: 'PowerGym',
+        contact: '+7 (495) 123-45-67',
+        price: '3000 ₽/месяц',
+        desc: 'Современный тренажерный зал с профессиональным оборудованием',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'FitZone',
+        contact: '+7 (495) 987-65-43',
+        price: '4000 ₽/месяц',
+        desc: 'Фитнес-клуб премиум класса с бассейном и сауной',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]);
+
     await queryInterface.bulkInsert(
       'GymReviews',
       [

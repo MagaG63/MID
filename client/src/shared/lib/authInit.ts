@@ -1,6 +1,6 @@
 // shared/lib/authInit.ts
 import { store } from '@/app/store/store';
-import axiosInstance from '@/shared/api/axiosInstance';
+import axiosInstance, { setAccessToken } from '@/shared/api/axiosInstance';
 import { loginUserThunk } from '@/entities/user/model/user.thunk';
 import { loginTrainerThunk } from '@/entities/trainer/model/trainer.thunk';
 
@@ -15,9 +15,14 @@ export const checkAuthOnLoad = async () => {
     // Пытаемся обновить токен через refresh
     const response = await axiosInstance.post('/api/auth/refresh');
 
-    if (response.data.user) {
+    if (response.data.user && response.data.accessToken) {
       const userData = response.data.user;
+      const accessToken = response.data.accessToken;
+      
       console.log('✅ checkAuthOnLoad: Найден пользователь', userData.role, userData);
+      
+      // ✅ СОХРАНЯЕМ ТОКЕН
+      setAccessToken(accessToken);
 
       // В зависимости от роли диспатчим соответствующий thunk
       if (userData.role === 'user') {

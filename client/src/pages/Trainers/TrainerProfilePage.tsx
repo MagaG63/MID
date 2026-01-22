@@ -79,6 +79,16 @@ export default function TrainerProfilePage(): React.JSX.Element {
     }
   };
 
+  // Функция для обновления только рейтинга (без полной перезагрузки)
+  const refreshRating = async () => {
+    try {
+      const ratingData = await TrainerReviewService.getTrainerRating(Number(trainerId));
+      setRating(ratingData);
+    } catch (error) {
+      console.error('Error refreshing rating:', error);
+    }
+  };
+
   const renderStars = (rating: number) => {
     const stars = [];
     const fullStars = Math.floor(rating);
@@ -207,7 +217,7 @@ export default function TrainerProfilePage(): React.JSX.Element {
 
         {/* Отзывы */}
         <div className="profile-section">
-          <TrainerReviews trainerId={trainer.id} />
+          <TrainerReviews trainerId={trainer.id} onReviewAdded={refreshRating} />
         </div>
       </div>
     </div>

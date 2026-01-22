@@ -5,6 +5,7 @@ import userReducer from '@/entities/user/model/user.slice';
 import forumsReducer from '@/entities/forum/model/forum.slice';
 import foodDiaryReducer from '@/entities/food-diary/model/foodDiary.Slice'
 import { trainingProgramReducer } from '@/entities/training-program';
+import trainerReviewReducer from '@/entities/trainer-reviews/model/trainer-review.slice';
 
 export const store = configureStore({
   reducer: { 
@@ -13,7 +14,8 @@ export const store = configureStore({
     user: userReducer,  
     forums: forumsReducer, 
     foodDiary: foodDiaryReducer,
-    trainingProgram: trainingProgramReducer
+    trainingProgram: trainingProgramReducer,
+    trainerReview: trainerReviewReducer
   }
 });
 

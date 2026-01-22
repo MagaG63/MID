@@ -26,6 +26,9 @@ axiosInstance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   // Добавляем токен если есть
   if (accessToken && config.headers) {
     config.headers.Authorization = `Bearer ${accessToken}`;
+    console.log('🔑 Token added to request:', config.url);
+  } else {
+    console.warn('⚠️ No token for request:', config.url);
   }
 
   return config;
