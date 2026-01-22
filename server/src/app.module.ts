@@ -18,6 +18,8 @@ import { TrainingProgramModule } from './training-program/training-program.modul
 import { TrainerReviewModule } from './trainer-reviews/trainer-review.module';
 import dotenv from 'dotenv';
 import { ForumModule } from './forum/forum.module';
+import { CommentModule } from './comment/comment.module';
+import { Comment } from './comment/comment.model';
 dotenv.config();
 
 @Module({
@@ -27,7 +29,15 @@ dotenv.config();
       storage: './database.sqlite',
       autoLoadModels: true,
       synchronize: false,
-      models: [User, Fitness, Trainer, Forum, TrainingProgram, TrainerReview],
+      models: [
+        User,
+        Fitness,
+        Trainer,
+        Forum,
+        TrainingProgram,
+        TrainerReview,
+        Comment,
+      ],
       logging: false,
     }),
 
@@ -39,6 +49,7 @@ dotenv.config();
     GymsReviewsModule,
     FoodDiaryModule,
     ForumModule,
+    CommentModule,
     TrainingProgramModule,
     TrainerReviewModule,
   ],
