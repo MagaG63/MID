@@ -1,7 +1,10 @@
 import type { ForumType } from '@/entities/forum/model/forum.type';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import './ModalForum.css';
+import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks';
+import { addComment, fetchComment } from '@/entities/comments/model/comment.thunks';
+import { fetchUsers } from '@/entities/user/model/user.thunk';
 
 type Props = {
   topic: ForumType;
@@ -10,14 +13,37 @@ type Props = {
 };
 
 function ModalForum({ setShow, topic, show }: Props): React.JSX.Element {
-  const [comment, setComment] = useState('');
+  const [data, setData] = useState('');
+  const dispatch = useAppDispatch();
+  const comments = useAppSelector((store) => store.comments.comments);
+  const user = useAppSelector((store) => store.user.currentUser);
+  const users = useAppSelector((store) => store.user.Users);
+  console.log(users);
+  useEffect(() => {
+    void dispatch(fetchComment());
+    void dispatch(fetchUsers());
+  }, []);
 
   const handleClose = (): void => setShow(false);
 
-  const handleCommentSubmit = (): void => {
-    // Здесь будет логика отправки комментария
-    console.log('Отправка комментария:', comment);
-    setComment('');
+  const handleCommentSubmit = async (): Promise<void> => {
+    if (user && data.trim()) {
+      const response = {
+        forum_id: topic.id,
+        author_id: user.id,
+        content: data,
+        parent_id: undefined,
+        likes_count: undefined,
+        status: undefined,
+      };
+      try {
+        await dispatch(addComment(response));
+        setData(''); // Очищаем поле ввода после успешной отправки
+        void dispatch(fetchComment()); // Обновляем список комментариев
+      } catch (error) {
+        console.error('Ошибка при добавлении комментария:', error);
+      }
+    }
   };
 
   return (
@@ -89,6 +115,7 @@ function ModalForum({ setShow, topic, show }: Props): React.JSX.Element {
         {/* Секция комментариев */}
         <div className="comment-section">
           {/* Форма добавления комментария */}
+
           <div className="comment-form">
             <Form.Label>
               <i className="bi bi-pencil-square"></i>
@@ -97,58 +124,40 @@ function ModalForum({ setShow, topic, show }: Props): React.JSX.Element {
             <Form.Control
               as="textarea"
               rows={4}
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
               placeholder="Поделитесь своим мнением..."
+              value={data}
+              onChange={(e) => {
+                setData(e.target.value);
+              }}
             />
-            <Button
-              className="comment-submit-btn"
-              onClick={handleCommentSubmit}
-              disabled={!comment.trim()}
-            >
+            <Button className="comment-submit-btn" onClick={handleCommentSubmit}>
               <i className="bi bi-send me-2"></i>
               Отправить комментарий
             </Button>
           </div>
-
           {/* Список комментариев */}
           <div className="comments-list">
             <Form.Label>
               <i className="bi bi-chat-left-text"></i>
-              Комментарии (3)
+              Комментарии ({comments.filter((comment) => comment.forum_id === topic.id).length})
             </Form.Label>
 
-            {/* Пример комментария */}
-            <div className="comment-item">
-              <div className="d-flex justify-content-between align-items-start mb-2">
-                <strong className="text-primary">Александр К.</strong>
-                <small className="text-muted">2 часа назад</small>
-              </div>
-              <p className="mb-0">
-                Отличная тема! Очень актуальная информация, спасибо за подробное описание.
-              </p>
-            </div>
-
-            <div className="comment-item">
-              <div className="d-flex justify-content-between align-items-start mb-2">
-                <strong className="text-primary">Мария С.</strong>
-                <small className="text-muted">5 часов назад</small>
-              </div>
-              <p className="mb-0">
-                Согласна с предыдущим комментарием. Добавлю от себя, что это действительно работает
-                на практике.
-              </p>
-            </div>
-
-            <div className="comment-item">
-              <div className="d-flex justify-content-between align-items-start mb-2">
-                <strong className="text-primary">Дмитрий П.</strong>
-                <small className="text-muted">1 день назад</small>
-              </div>
-              <p className="mb-0">
-                Интересный подход! Буду пробовать применить в своих тренировках.
-              </p>
-            </div>
+            {comments.map(
+              (comment) =>
+                comment.forum_id === topic.id && (
+                  <>
+                    <div className="comment-item">
+                      <div className="d-flex justify-content-between align-items-start mb-2">
+                        <strong className="text-primary">
+                          {users[comment.author_id - 1]?.name}
+                        </strong>
+                        <small className="text-muted">{comment.createdAt}</small>
+                      </div>
+                      <p className="mb-0">{comment.content}</p>
+                    </div>
+                  </>
+                ),
+            )}
           </div>
         </div>
       </Modal.Body>

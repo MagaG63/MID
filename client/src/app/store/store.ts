@@ -1,21 +1,23 @@
 import { configureStore } from '@reduxjs/toolkit';
 import fitnessReducer from '@/entities/fitnessClubs/model/fitness.Slice';
-import trainerReducer from '@/entities/trainer/model/trainer.slice'
+import trainerReducer from '@/entities/trainer/model/trainer.slice';
 import userReducer from '@/entities/user/model/user.slice';
 import forumsReducer from '@/entities/forum/model/forum.slice';
-import foodDiaryReducer from '@/entities/food-diary/model/foodDiary.Slice'
+import foodDiaryReducer from '@/entities/food-diary/model/foodDiary.Slice';
 import { trainingProgramReducer } from '@/entities/training-program';
 import trainerReviewReducer from '@/entities/trainer-reviews/model/trainer-review.slice';
+import commentReducer from '@/entities/comments/model/comment.slice';
 
 export const store = configureStore({
-  reducer: { 
-    fitness: fitnessReducer,   
-    trainer: trainerReducer,  
-    user: userReducer,  
-    forums: forumsReducer, 
+  reducer: {
+    fitness: fitnessReducer,
+    trainer: trainerReducer,
+    user: userReducer,
+    forums: forumsReducer,
     foodDiary: foodDiaryReducer,
     trainingProgram: trainingProgramReducer,
-    trainerReview: trainerReviewReducer
+    trainerReview: trainerReviewReducer,
+    comments: commentReducer,
   }
 });
 

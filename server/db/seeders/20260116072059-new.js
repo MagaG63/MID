@@ -287,6 +287,7 @@ module.exports = {
     ];
     await queryInterface.bulkInsert('Trainers', trainers, {});
 
+<<<<<<< HEAD
     // Добавляем данные в таблицу Gyms
     await queryInterface.bulkInsert('Gyms', [
       {
@@ -361,6 +362,62 @@ module.exports = {
       ],
       {},
     );
+=======
+    // await queryInterface.bulkInsert(
+    //   'GymReviews',
+    //   [
+    //     {
+    //       rate: 5,
+    //       userId: null,
+    //       trainerId: 1,
+    //       content:
+    //         'Отличный зал! Новое оборудование, чисто, просторно. Тренируюсь уже 3 месяца, результат на лицо.',
+    //       gymId: 1,
+    //       like: null,
+    //       dislike: null,
+    //       createdAt: new Date(),
+    //       updatedAt: new Date(),
+    //     },
+    //     {
+    //       rate: 4,
+    //       userId: 2,
+    //       trainerId: null,
+    //       content:
+    //         'Хороший зал для кардио и групповых занятий. Штанги могли бы быть поновее, но в целом всё устраивает.',
+    //       gymId: 1,
+    //       like: 'Кардио зона',
+    //       dislike: 'Старые штанги',
+    //       createdAt: new Date(),
+    //       updatedAt: new Date(),
+    //     },
+    //     {
+    //       rate: 3,
+    //       userId: 3,
+    //       trainerId: null,
+    //       content:
+    //         'Средний зал. Очереди на тренажёры в вечернее время, душ только 2 кабинки на всех.',
+    //       gymId: 2,
+    //       like: null,
+    //       dislike: 'Мало душевых',
+    //       createdAt: new Date(),
+    //       updatedAt: new Date(),
+    //     },
+    //     {
+    //       rate: 5,
+    //       userId: 1,
+    //       trainerId: null,
+    //       content:
+    //         'Лучший зал в районе! Профессиональное оборудование, отличная вентиляция, дружелюбный персонал.',
+    //       gymId: 2,
+    //       like: 'Всё',
+    //       dislike: null,
+    //       createdAt: new Date(),
+    //       updatedAt: new Date(),
+    //     },
+    //   ],
+    //   {},
+    // );
+>>>>>>> main
   },
 
   async down(queryInterface, Sequelize) {
