@@ -96,6 +96,7 @@ module.exports = {
     //   },
     // ]);
 
+
     await queryInterface.bulkInsert('FitnessClubs', [
       {
         name: 'Spirit. Fitness',
@@ -224,68 +225,87 @@ module.exports = {
     ];
     await queryInterface.bulkInsert('Trainers', trainers, {});
 
-    // await queryInterface.bulkInsert(
-    //   'GymReviews',
-    //   [
-    //     {
-    //       rate: 5,
-    //       userId: null,
-    //       trainerId: 1,
-    //       content:
-    //         'Отличный зал! Новое оборудование, чисто, просторно. Тренируюсь уже 3 месяца, результат на лицо.',
-    //       gymId: 1,
-    //       like: null,
-    //       dislike: null,
-    //       createdAt: new Date(),
-    //       updatedAt: new Date(),
-    //     },
-    //     {
-    //       rate: 4,
-    //       userId: 2,
-    //       trainerId: null,
-    //       content:
-    //         'Хороший зал для кардио и групповых занятий. Штанги могли бы быть поновее, но в целом всё устраивает.',
-    //       gymId: 1,
-    //       like: 'Кардио зона',
-    //       dislike: 'Старые штанги',
-    //       createdAt: new Date(),
-    //       updatedAt: new Date(),
-    //     },
-    //     {
-    //       rate: 3,
-    //       userId: 3,
-    //       trainerId: null,
-    //       content:
-    //         'Средний зал. Очереди на тренажёры в вечернее время, душ только 2 кабинки на всех.',
-    //       gymId: 2,
-    //       like: null,
-    //       dislike: 'Мало душевых',
-    //       createdAt: new Date(),
-    //       updatedAt: new Date(),
-    //     },
-    //     {
-    //       rate: 5,
-    //       userId: 1,
-    //       trainerId: null,
-    //       content:
-    //         'Лучший зал в районе! Профессиональное оборудование, отличная вентиляция, дружелюбный персонал.',
-    //       gymId: 2,
-    //       like: 'Всё',
-    //       dislike: null,
-    //       createdAt: new Date(),
-    //       updatedAt: new Date(),
-    //     },
-    //   ],
-    //   {},
-    // );
+    // Добавляем данные в таблицу Gyms
+    await queryInterface.bulkInsert('Gyms', [
+      {
+        name: 'PowerGym',
+        contact: '+7 (495) 123-45-67',
+        price: '3000 ₽/месяц',
+        desc: 'Современный тренажерный зал с профессиональным оборудованием',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: 'FitZone',
+        contact: '+7 (495) 987-65-43',
+        price: '4000 ₽/месяц',
+        desc: 'Фитнес-клуб премиум класса с бассейном и сауной',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]);
+
+    await queryInterface.bulkInsert(
+      'GymReviews',
+      [
+        {
+          rate: 5,
+          userId: null,
+          trainerId: 1,
+          content:
+            'Отличный зал! Новое оборудование, чисто, просторно. Тренируюсь уже 3 месяца, результат на лицо.',
+          gymId: 1,
+          like: null,
+          dislike: null,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          rate: 4,
+          userId: 2,
+          trainerId: null,
+          content:
+            'Хороший зал для кардио и групповых занятий. Штанги могли бы быть поновее, но в целом всё устраивает.',
+          gymId: 1,
+          like: 'Кардио зона',
+          dislike: 'Старые штанги',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          rate: 3,
+          userId: 3,
+          trainerId: null,
+          content:
+            'Средний зал. Очереди на тренажёры в вечернее время, душ только 2 кабинки на всех.',
+          gymId: 2,
+          like: null,
+          dislike: 'Мало душевых',
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          rate: 5,
+          userId: 1,
+          trainerId: null,
+          content:
+            'Лучший зал в районе! Профессиональное оборудование, отличная вентиляция, дружелюбный персонал.',
+          gymId: 2,
+          like: 'Всё',
+          dislike: null,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+      ],
+      {},
+    );
   },
 
   async down(queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    await queryInterface.bulkDelete('Users', null, {});
+    await queryInterface.bulkDelete('Trainers', null, {});
+    await queryInterface.bulkDelete('FitnessClubs', null, {});
+    await queryInterface.bulkDelete('Gyms', null, {});
+    await queryInterface.bulkDelete('GymReviews', null, {});
   },
 };

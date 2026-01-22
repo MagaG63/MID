@@ -2,7 +2,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice, createEntityAdapter } from '@reduxjs/toolkit';
 import type { TrainerType } from './trainer.type';
 import type { TrainersState, TrainerProfile, TrainerSummary } from './trainer.interfaces';
-import { fetchTrainersThunk, loginTrainerThunk, registerTrainerThunk } from './trainer.thunk';
+import { fetchTrainersThunk, loginTrainerThunk, registerTrainerThunk, updateTrainerProfileThunk } from './trainer.thunk';
 
 export const trainerAdapter = createEntityAdapter<TrainerSummary>({
   selectId: (trainer) => trainer.id,
@@ -209,6 +209,21 @@ export const trainerSlice = createSlice({
       .addCase(fetchTrainersThunk.rejected, (state, action) => {
         state.loading.trainers = false;
         state.errors.trainers = action.payload as string;
+      })
+      // Update trainer profile
+      .addCase(updateTrainerProfileThunk.pending, (state) => {
+        state.loading.profileUpdate = true;
+        state.errors.profileUpdate = null;
+      })
+      .addCase(updateTrainerProfileThunk.fulfilled, (state, action: PayloadAction<TrainerProfile>) => {
+        console.log('✅ Профиль тренера обновлен в Redux:', action.payload);
+        state.authenticatedTrainer = action.payload;
+        state.loading.profileUpdate = false;
+        state.errors.profileUpdate = null;
+      })
+      .addCase(updateTrainerProfileThunk.rejected, (state, action) => {
+        state.loading.profileUpdate = false;
+        state.errors.profileUpdate = action.payload as string;
       });
   },
 });
