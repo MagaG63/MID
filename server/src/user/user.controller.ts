@@ -83,7 +83,7 @@ export class UserController {
     // TODO: Получить ID из JWT токена
     // Пока используем email для поиска
     const user = await this.userService.findByEmail(updateData.email);
-    
+
     if (!user) {
       throw new Error('User not found');
     }

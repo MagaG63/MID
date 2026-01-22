@@ -1,9 +1,10 @@
 import type { ForumType } from '@/entities/forum/model/forum.type';
 import React, { useEffect, useState } from 'react';
-import { Modal, Button, Form, useAccordionButton } from 'react-bootstrap';
+import { Modal, Button, Form } from 'react-bootstrap';
 import './ModalForum.css';
 import { useAppDispatch, useAppSelector } from '@/shared/lib/hooks';
 import { addComment, fetchComment } from '@/entities/comments/model/comment.thunks';
+import { fetchUsers } from '@/entities/user/model/user.thunk';
 
 type Props = {
   topic: ForumType;
@@ -16,14 +17,17 @@ function ModalForum({ setShow, topic, show }: Props): React.JSX.Element {
   const dispatch = useAppDispatch();
   const comments = useAppSelector((store) => store.comments.comments);
   const user = useAppSelector((store) => store.user.currentUser);
+  const users = useAppSelector((store) => store.user.Users);
+  console.log(users);
   useEffect(() => {
     void dispatch(fetchComment());
+    void dispatch(fetchUsers());
   }, []);
 
   const handleClose = (): void => setShow(false);
 
-  const handleCommentSubmit = (): void => {
-    if (user) {
+  const handleCommentSubmit = async (): Promise<void> => {
+    if (user && data.trim()) {
       const response = {
         forum_id: topic.id,
         author_id: user.id,
@@ -32,7 +36,13 @@ function ModalForum({ setShow, topic, show }: Props): React.JSX.Element {
         likes_count: undefined,
         status: undefined,
       };
-      void dispatch(addComment(response));
+      try {
+        await dispatch(addComment(response));
+        setData(''); // Очищаем поле ввода после успешной отправки
+        void dispatch(fetchComment()); // Обновляем список комментариев
+      } catch (error) {
+        console.error('Ошибка при добавлении комментария:', error);
+      }
     }
   };
 
@@ -129,16 +139,18 @@ function ModalForum({ setShow, topic, show }: Props): React.JSX.Element {
           <div className="comments-list">
             <Form.Label>
               <i className="bi bi-chat-left-text"></i>
-              Комментарии ({comments.filter((comment) => comment.id === topic.id).length})
+              Комментарии ({comments.filter((comment) => comment.forum_id === topic.id).length})
             </Form.Label>
 
             {comments.map(
               (comment) =>
-                comment.id === topic.id && (
+                comment.forum_id === topic.id && (
                   <>
                     <div className="comment-item">
                       <div className="d-flex justify-content-between align-items-start mb-2">
-                        <strong className="text-primary">{comment.author_id}.</strong>
+                        <strong className="text-primary">
+                          {users[comment.author_id - 1]?.name}
+                        </strong>
                         <small className="text-muted">{comment.createdAt}</small>
                       </div>
                       <p className="mb-0">{comment.content}</p>
