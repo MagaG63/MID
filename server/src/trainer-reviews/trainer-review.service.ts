@@ -48,7 +48,17 @@ export class TrainerReviewService {
       text: createDto.text || '',
     });
 
-    return this.toSafeData(review);
+    // Загружаем отзыв с данными пользователя
+    const reviewWithUser = await this.trainerReviewModel.findByPk(review.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['id', 'name'],
+        },
+      ],
+    });
+
+    return this.toSafeDataWithUser(reviewWithUser!);
   }
 
   // Получить все отзывы тренера

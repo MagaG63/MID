@@ -5,6 +5,7 @@ import userReducer from '@/entities/user/model/user.slice';
 import forumsReducer from '@/entities/forum/model/forum.slice';
 import foodDiaryReducer from '@/entities/food-diary/model/foodDiary.Slice';
 import { trainingProgramReducer } from '@/entities/training-program';
+import trainerReviewReducer from '@/entities/trainer-reviews/model/trainer-review.slice';
 import commentReducer from '@/entities/comments/model/comment.slice';
 
 export const store = configureStore({
@@ -15,8 +16,9 @@ export const store = configureStore({
     forums: forumsReducer,
     foodDiary: foodDiaryReducer,
     trainingProgram: trainingProgramReducer,
+    trainerReview: trainerReviewReducer,
     comments: commentReducer,
-  },
+  }
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

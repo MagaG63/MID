@@ -93,23 +93,35 @@ export class UserService {
     id: number,
     updateData: Partial<CreateUserData>,
   ): Promise<SafeUserData> {
-    const user = await this.findById(id);
+    try {
+      console.log('🔄 UserService.updateUser:', { id, updateData });
 
-    if (!user) {
-      throw new Error('Пользователь не найден');
+      const user = await this.findById(id);
+
+      if (!user) {
+        console.error('❌ User not found:', id);
+        throw new Error('Пользователь не найден');
+      }
+
+      console.log('✅ User found:', user.id);
+
+      // Если обновляется пароль - хешируем его
+      if (updateData.password) {
+        updateData.password = await bcrypt.hash(updateData.password, 10);
+      }
+
+      await user.update(updateData);
+
+      console.log('✅ User updated successfully');
+
+      // Возвращаем безопасные данные
+      const data = user.toJSON();
+      const { password, ...safeData } = data;
+      return safeData as SafeUserData;
+    } catch (error) {
+      console.error('❌ UserService.updateUser ERROR:', error);
+      throw error;
     }
-
-    // Если обновляется пароль - хешируем его
-    if (updateData.password) {
-      updateData.password = await bcrypt.hash(updateData.password, 10);
-    }
-
-    await user.update(updateData);
-
-    // Возвращаем безопасные данные
-    const data = user.toJSON();
-    const { password, ...safeData } = data;
-    return safeData as SafeUserData;
   }
 
   async deleteUser(id: number): Promise<void> {

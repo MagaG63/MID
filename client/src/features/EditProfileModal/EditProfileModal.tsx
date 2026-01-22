@@ -110,18 +110,20 @@ export default function EditProfileModal({
         await dispatch(updateTrainerProfileThunk(formDataToSend) as any).unwrap();
       } else {
         // Обновление профиля пользователя
-        await dispatch(
+        const result = await dispatch(
           updateUserThunk({
             name: formData.name,
             email: formData.email,
           }) as any,
         ).unwrap();
+        
+        console.log('✅ Профиль пользователя обновлен:', result);
       }
 
       setSuccess(true);
       setTimeout(() => {
         onClose();
-        window.location.reload(); // Перезагружаем страницу для обновления данных
+        // Убираем перезагрузку страницы - Redux state уже обновлен
       }, 1500);
     } catch (err: any) {
       console.error('Ошибка обновления профиля:', err);
