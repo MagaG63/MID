@@ -17,6 +17,7 @@ function ModalForum({ setShow, topic, show }: Props): React.JSX.Element {
   const dispatch = useAppDispatch();
   const comments = useAppSelector((store) => store.comments.comments);
   const user = useAppSelector((store) => store.user.currentUser);
+  const trainer = useAppSelector((store) => store.trainer.currentTrainer);
   const users = useAppSelector((store) => store.user.Users);
   console.log(users);
   useEffect(() => {
@@ -27,7 +28,7 @@ function ModalForum({ setShow, topic, show }: Props): React.JSX.Element {
   const handleClose = (): void => setShow(false);
 
   const handleCommentSubmit = async (): Promise<void> => {
-    if (user && data.trim()) {
+    if (user) {
       const response = {
         forum_id: topic.id,
         author_id: user.id,
