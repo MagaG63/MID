@@ -14,7 +14,6 @@ function TopicPage(): React.JSX.Element {
   
   return (
     <>
-      <div>TopicPage</div>
       <div style={{ marginLeft: '10px', marginRight: '10px' }}>
         {forums.map((topic) => (
           <TopicCard key={topic.id} topic={topic} />

@@ -1,18 +1,18 @@
-/* pages/Trainers/TrainerProfilePage.css */
+/* pages/Trainers/TrainerProfilePage.css - Dark Theme */
 .trainer-profile-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background-color: #1a1a1a;
   padding: 40px 20px;
 }
 
 .back-btn {
-  background: white;
-  border: 2px solid #ddd;
+  background: #202222;
+  border: 2px solid #2d2d2d;
   padding: 10px 20px;
   border-radius: 8px;
   font-size: 16px;
   font-weight: 600;
-  color: #666;
+  color: #a0a0a0;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-bottom: 30px;
@@ -20,17 +20,18 @@
 }
 
 .back-btn:hover {
-  border-color: #667eea;
-  color: #667eea;
+  border-color: #20808d;
+  color: #20808d;
   transform: translateX(-5px);
 }
 
 .profile-container {
   max-width: 1200px;
   margin: 0 auto;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: #202222;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  border: 1px solid #2d2d2d;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -41,7 +42,7 @@
   flex-direction: row;
   gap: 40px;
   padding: 40px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #20808d, #1a6b75);
   color: white;
   align-items: flex-start;
 }
@@ -60,7 +61,7 @@
   border-radius: 50%;
   object-fit: cover;
   border: 5px solid white;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .profile-image-placeholder {
@@ -135,7 +136,7 @@
 
 .profile-section {
   padding: 40px;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid #2d2d2d;
 }
 
 .profile-section:last-child {
@@ -145,7 +146,7 @@
 .section-title {
   font-size: 28px;
   font-weight: 700;
-  color: #333;
+  color: #e5e5e5;
   margin: 0 0 30px 0;
 }
 
@@ -158,12 +159,14 @@
 .certificate-item {
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
+  border: 1px solid #2d2d2d;
 }
 
 .certificate-item:hover {
   transform: translateY(-5px);
+  border-color: #20808d;
 }
 
 .certificate-image {
@@ -179,51 +182,54 @@
 }
 
 .program-card {
-  background: #f9f9f9;
+  background: #1a1a1a;
   border-radius: 15px;
   padding: 25px;
   transition: all 0.3s ease;
+  border: 1px solid #2d2d2d;
 }
 
 .program-card:hover {
-  background: #f0f0f0;
+  background: #252525;
   transform: translateY(-3px);
+  border-color: #20808d;
 }
 
 .program-name {
   font-size: 20px;
   font-weight: 600;
-  color: #333;
+  color: #e5e5e5;
   margin: 0 0 10px 0;
 }
 
 .program-price {
   font-size: 24px;
   font-weight: 700;
-  color: #4caf50;
+  color: #4ade80;
   margin: 0 0 15px 0;
 }
 
 .program-contact {
   font-size: 15px;
-  color: #666;
+  color: #a0a0a0;
   margin: 0;
 }
 
 .program-contact strong {
-  color: #333;
+  color: #e5e5e5;
 }
 
 .no-programs {
   text-align: center;
   padding: 60px 20px;
-  background: #f9f9f9;
+  background: #1a1a1a;
   border-radius: 15px;
+  border: 1px solid #2d2d2d;
 }
 
 .no-programs p {
   font-size: 18px;
-  color: #666;
+  color: #a0a0a0;
   margin: 0;
 }
 
@@ -235,18 +241,18 @@
 
 .loading {
   font-size: 20px;
-  color: #666;
+  color: #a0a0a0;
 }
 
 .error-state h2 {
   font-size: 32px;
-  color: #333;
+  color: #e5e5e5;
   margin-bottom: 10px;
 }
 
 .error-state p {
   font-size: 18px;
-  color: #666;
+  color: #a0a0a0;
   margin-bottom: 30px;
 }
 
@@ -261,13 +267,13 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #20808d, #1a6b75);
   color: white;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 7px 14px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 7px 14px rgba(32, 128, 141, 0.4);
 }
 
 @media (max-width: 968px) {

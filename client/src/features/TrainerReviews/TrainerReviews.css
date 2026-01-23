@@ -1,4 +1,4 @@
-/* features/TrainerReviews/TrainerReviews.css */
+/* features/TrainerReviews/TrainerReviews.css - Dark Theme */
 .trainer-reviews {
   margin-top: 40px;
 }
@@ -13,28 +13,29 @@
 .reviews-header h2 {
   font-size: 28px;
   font-weight: 700;
-  color: #333;
+  color: #e5e5e5;
   margin: 0;
 }
 
 .reviews-loading {
   text-align: center;
   padding: 40px;
-  color: #666;
+  color: #a0a0a0;
   font-size: 16px;
 }
 
 .review-form-container {
-  background: #f9f9f9;
+  background: #1a1a1a;
   border-radius: 15px;
   padding: 30px;
   margin-bottom: 30px;
+  border: 1px solid #2d2d2d;
 }
 
 .review-form h3 {
   font-size: 22px;
   font-weight: 600;
-  color: #333;
+  color: #e5e5e5;
   margin: 0 0 20px 0;
 }
 
@@ -45,7 +46,7 @@
 .form-group label {
   display: block;
   font-weight: 600;
-  color: #333;
+  color: #e5e5e5;
   margin-bottom: 8px;
 }
 
@@ -64,7 +65,7 @@
 }
 
 .star.empty {
-  color: #ddd;
+  color: #2d2d2d;
 }
 
 .star.interactive {
@@ -79,18 +80,25 @@
 .form-group textarea {
   width: 100%;
   padding: 12px;
-  border: 1px solid #ddd;
+  border: 2px solid #2d2d2d;
   border-radius: 8px;
   font-size: 15px;
   font-family: inherit;
   resize: vertical;
   transition: border-color 0.2s;
+  background-color: #252525;
+  color: #e5e5e5;
+}
+
+.form-group textarea::placeholder {
+  color: #666;
 }
 
 .form-group textarea:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: #20808d;
+  box-shadow: 0 0 0 3px rgba(32, 128, 141, 0.1);
+  background-color: #2a2a2a;
 }
 
 .form-actions {
@@ -110,13 +118,13 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #20808d, #1a6b75);
   color: white;
 }
 
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 7px 14px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 7px 14px rgba(32, 128, 141, 0.4);
 }
 
 .btn-primary:disabled {
@@ -125,35 +133,36 @@
 }
 
 .btn-secondary {
-  background: white;
-  color: #666;
-  border: 2px solid #ddd;
+  background: #252525;
+  color: #a0a0a0;
+  border: 2px solid #2d2d2d;
 }
 
 .btn-secondary:hover {
-  border-color: #667eea;
-  color: #667eea;
+  border-color: #20808d;
+  color: #20808d;
 }
 
 .error-message {
-  background: #fee;
-  border: 1px solid #fcc;
+  background: #4d1a1a;
+  border: 1px solid #dc3545;
   border-radius: 8px;
   padding: 12px;
-  color: #c33;
+  color: #ff6b6b;
   margin-bottom: 20px;
 }
 
 .no-reviews {
   text-align: center;
   padding: 60px 20px;
-  background: #f9f9f9;
+  background: #1a1a1a;
   border-radius: 15px;
+  border: 1px solid #2d2d2d;
 }
 
 .no-reviews p {
   font-size: 18px;
-  color: #666;
+  color: #a0a0a0;
   margin: 0;
 }
 
@@ -164,15 +173,17 @@
 }
 
 .review-card {
-  background: white;
+  background: #202222;
   border-radius: 15px;
   padding: 25px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  transition: box-shadow 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid #2d2d2d;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .review-card:hover {
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  border-color: #20808d;
 }
 
 .review-header {
@@ -192,7 +203,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #20808d, #1a6b75);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -204,13 +215,13 @@
 .author-info h4 {
   font-size: 18px;
   font-weight: 600;
-  color: #333;
+  color: #e5e5e5;
   margin: 0 0 4px 0;
 }
 
 .review-date {
   font-size: 14px;
-  color: #999;
+  color: #666;
 }
 
 .review-rating {
@@ -237,11 +248,12 @@
   border-radius: 8px;
   transition: all 0.3s ease;
   opacity: 0.6;
+  color: #ff6b6b;
 }
 
 .btn-delete-review:hover:not(:disabled) {
   opacity: 1;
-  background: #fee;
+  background: #4d1a1a;
   transform: scale(1.1);
 }
 
@@ -253,13 +265,13 @@
 .review-text {
   margin-top: 15px;
   padding-top: 15px;
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid #2d2d2d;
 }
 
 .review-text p {
   font-size: 15px;
   line-height: 1.6;
-  color: #555;
+  color: #a0a0a0;
   margin: 0;
 }
 
