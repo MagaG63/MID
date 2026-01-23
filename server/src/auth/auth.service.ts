@@ -274,19 +274,21 @@ export class AuthService {
         throw new UnauthorizedException('User not found');
       }
 
-      const tokens = generateTokens({
-        id: payload.sub,
-        email: payload.email,
-        name: payload.name,
-        role: payload.role,
-      });
-
+      // ✅ ИСПОЛЬЗУЕМ АКТУАЛЬНЫЕ ДАННЫЕ ИЗ БД, А НЕ ИЗ СТАРОГО ТОКЕНА
       const userData: any = {
-        id: payload.sub,
-        email: payload.email,
-        name: payload.name,
+        id: (user as any).id,
+        email: (user as any).email,
+        name: (user as any).name,
         role: payload.role,
       };
+
+      // Генерируем новые токены с актуальными данными
+      const tokens = generateTokens({
+        id: userData.id,
+        email: userData.email,
+        name: userData.name,
+        role: payload.role,
+      });
 
       // Добавляем специфичные поля для тренера
       if (payload.role === UserRole.TRAINER && user) {

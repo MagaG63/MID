@@ -10,12 +10,14 @@ import { useAuth } from '@/shared/lib/useAuth';
 import EditProfileModal from '@/features/EditProfileModal/EditProfileModal';
 import type { TrainingProgramFormData } from '@/features/TrainingProgramModal/TrainingProgramModal';
 import TrainingProgramModal from '@/features/TrainingProgramModal/TrainingProgramModal';
+import CreateForumModal from '@/features/CreateForumModal/CreateForumModal';
 import {
   fetchTrainerProgramsThunk,
   createProgramThunk,
   updateProgramThunk,
   deleteProgramThunk,
 } from '@/entities/training-program';
+import { createForumThunk } from '@/entities/forum/model/forum.thunks';
 import './MyPage.css';
 
 type ProfileType = 'user' | 'trainer' | null;
@@ -26,6 +28,7 @@ function ProfilePage(): React.JSX.Element {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isProgramModalOpen, setIsProgramModalOpen] = useState(false);
+  const [isForumModalOpen, setIsForumModalOpen] = useState(false);
   const [editingProgram, setEditingProgram] = useState<TrainingProgramFormData | null>(null);
 
   // ✅ ИСПРАВЛЕНО: правильные пути к данным
@@ -33,6 +36,25 @@ function ProfilePage(): React.JSX.Element {
   const currentTrainer = useAppSelector((state) => state.trainer.authenticatedTrainer);
   const trainingPrograms = useAppSelector((state) => state.trainingProgram.programs);
   const programsLoading = useAppSelector((state) => state.trainingProgram.loading);
+
+
+  const handleForumThema = () => {
+    console.log('🔵 Открываем модалку форума');
+    setIsForumModalOpen(true);
+  };
+
+  const handleForumSubmit = async (data: {
+    title: string;
+    description: string;
+    category_id: number;
+  }) => {
+    try {
+      await dispatch(createForumThunk(data)).unwrap();
+      // Форум автоматически добавится в Redux через slice
+    } catch (error: any) {
+      throw new Error(error || 'Ошибка создания темы форума');
+    }
+  };
 
   const handleLogout = async () => {
     try {
@@ -310,7 +332,17 @@ function ProfilePage(): React.JSX.Element {
             )}
           </div>
         )}
+     
 
+     {isTrainer && (
+          <div className="profile-section">
+            <div className="section-header">
+              <button className="btn btn-primary btn-sm" onClick={handleForumThema}>
+                + Добавить тему форума
+              </button>
+            </div>
+          </div>
+        )}
         {/* Действия */}
         <div className="profile-actions">
           <button className="btn btn-primary" onClick={() => setIsModalOpen(true)}>
@@ -340,6 +372,13 @@ function ProfilePage(): React.JSX.Element {
         onSubmit={handleProgramSubmit}
         initialData={editingProgram}
         mode={editingProgram ? 'edit' : 'create'}
+      />
+
+      {/* Модальное окно создания темы форума */}
+      <CreateForumModal
+        isOpen={isForumModalOpen}
+        onClose={() => setIsForumModalOpen(false)}
+        onSubmit={handleForumSubmit}
       />
     </div>
   );

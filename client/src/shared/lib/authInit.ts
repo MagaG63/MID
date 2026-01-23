@@ -26,6 +26,7 @@ export const checkAuthOnLoad = async () => {
 
       // В зависимости от роли диспатчим соответствующий thunk
       if (userData.role === 'user') {
+        // ✅ ОБНОВЛЯЕМ STATE С АКТУАЛЬНЫМИ ДАННЫМИ
         store.dispatch(
           loginUserThunk.fulfilled(userData, '', {
             email: userData.email,
@@ -33,16 +34,16 @@ export const checkAuthOnLoad = async () => {
             role: 'user',
           }),
         );
-        console.log('✅ User восстановлен в store');
+        console.log('✅ User восстановлен в store с актуальными данными');
       } else if (userData.role === 'trainer') {
-        // ✅ ИСПРАВЛЕНИЕ: Правильные параметры для trainer thunk
+        // ✅ ОБНОВЛЯЕМ STATE С АКТУАЛЬНЫМИ ДАННЫМИ
         store.dispatch(
           loginTrainerThunk.fulfilled(userData, '', {
             email: userData.email,
             password: '',
           }),
         );
-        console.log('✅ Trainer восстановлен в store');
+        console.log('✅ Trainer восстановлен в store с актуальными данными');
       }
 
       return userData;

@@ -22,7 +22,7 @@ function ModalForum({ setShow, topic, show }: Props): React.JSX.Element {
   const trainer = useAppSelector((store) => store.trainer.authenticatedTrainer);
   const users = useAppSelector((store) => store.user.Users);
   const trainers = useAppSelector((store) => store.trainer.trainers);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   console.log('Users:', users);
   console.log('Trainers:', trainers);
@@ -60,8 +60,8 @@ function ModalForum({ setShow, topic, show }: Props): React.JSX.Element {
       } catch (error) {
         console.error('Ошибка при добавлении комментария:', error);
       }
-    }else {
-      navigate('/login')
+    } else {
+      navigate('/login');
     }
   };
 
@@ -134,7 +134,7 @@ function ModalForum({ setShow, topic, show }: Props): React.JSX.Element {
               <div className="col-lg-3 col-md-6 col-6">
                 <div className="stat-card">
                   <i className="bi bi-person"></i>
-                  <span>Автор темы</span>
+                  <span>{trainers[topic.author_id - 1].name}</span>
                 </div>
               </div>
             </div>
@@ -182,7 +182,7 @@ function ModalForum({ setShow, topic, show }: Props): React.JSX.Element {
                           <span className="badge bg-success ms-2">Тренер</span>
                         )}
                       </strong>
-                      <small className="text-muted">{comment.createdAt}</small>
+                      <small className="text-muted">{comment.createdAt?.slice(0, 10)}</small>
                     </div>
                     <p className="mb-0">{comment.content}</p>
                   </div>
@@ -198,28 +198,6 @@ function ModalForum({ setShow, topic, show }: Props): React.JSX.Element {
             <i className="bi bi-x-circle me-2"></i>
             Закрыть
           </Button>
-
-          <div className="action-buttons-group">
-            <Button variant="outline-success" className="action-btn">
-              <i className="bi bi-bookmark me-2"></i>
-              Сохранить
-            </Button>
-
-            <Button variant="outline-primary" className="action-btn">
-              <i className="bi bi-share me-2"></i>
-              Поделиться
-            </Button>
-
-            <Button variant="outline-warning" className="action-btn">
-              <i className="bi bi-pencil me-2"></i>
-              Редактировать
-            </Button>
-
-            <Button variant="outline-danger" className="action-btn">
-              <i className="bi bi-flag me-2"></i>
-              Пожаловаться
-            </Button>
-          </div>
         </div>
       </Modal.Footer>
     </Modal>

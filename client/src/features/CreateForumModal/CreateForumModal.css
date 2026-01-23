@@ -1,0 +1,101 @@
+/* CreateForumModal.css */
+.forum-modal-overlay {
+  z-index: 1001 !important;
+}
+
+.forum-modal {
+  max-width: 600px;
+  z-index: 1002 !important;
+}
+
+.forum-modal .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.forum-modal label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #e5e5e5;
+  font-size: 0.9375rem;
+}
+
+.forum-modal input,
+.forum-modal textarea {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #1a1a1a;
+  border: 1px solid #2d2d2d;
+  border-radius: 8px;
+  color: #e5e5e5;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.forum-modal input:focus,
+.forum-modal textarea:focus {
+  outline: none;
+  border-color: #20808d;
+  background-color: #252525;
+}
+
+.forum-modal textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+  line-height: 1.5;
+}
+
+.forum-modal .success-message {
+  background-color: #1a4d2e;
+  color: #4ade80;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.forum-modal .error-message {
+  background-color: #4d1a1a;
+  color: #ff6b6b;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.forum-modal .modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.forum-modal .btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.forum-modal .btn-full {
+  width: 100%;
+}
+
+.forum-modal .btn-primary {
+  background-color: #20808d;
+  color: #ffffff;
+}
+
+.forum-modal .btn-primary:hover:not(:disabled) {
+  background-color: #1a6b76;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(32, 128, 141, 0.4);
+}
+
+.forum-modal .btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

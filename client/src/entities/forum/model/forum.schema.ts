@@ -7,7 +7,7 @@ export const forumPageSchema = z.object({
   author_id: z.number(),
   category_id: z.number(),
   status: z.string(),
-  is_pinned: z.boolean(),
+  is_pinned: z.number(),
   createdAt: z.string().nullable().optional(),
   updatedAt: z.string().nullable().optional(),
 });
@@ -19,7 +19,7 @@ export const forumSchema = z.object({
   author_id: z.number(),
   category_id: z.number(),
   status: z.string(),
-  is_pinned: z.boolean(),
+  is_pinned: z.number(),
   createdAt: z.string().nullable().optional(),
   updatedAt: z.string().nullable().optional(),
 });
