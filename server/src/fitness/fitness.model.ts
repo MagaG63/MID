@@ -5,84 +5,63 @@ import { Table, Column, Model, DataType } from 'sequelize-typescript';
   timestamps: true,
 })
 export class Fitness extends Model<Fitness> {
-  //   @Column({
-  //     type: DataType.INTEGER,
-  //     autoIncrement: true,
-  //     primaryKey: true,
-  //   })
-  //   id: number;
-
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  name: string;
+  declare name: string;
 
   @Column({
     type: DataType.TEXT,
     allowNull: true,
   })
-  description: string;
+  declare description: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  address: string;
+  declare address: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  phone: string;
+  declare phone: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  email: string;
+  declare email: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: true,
   })
-  website: string;
+  declare website: string;
 
   @Column({
     type: DataType.FLOAT,
     allowNull: true,
   })
-  rating: number;
+  declare rating: number;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  priceRange: string;
+  declare priceRange: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: false,
   })
-  workingHours: string;
+  declare workingHours: string;
 
   @Column({
     type: DataType.STRING,
     allowNull: true,
   })
-  image: string;
-
-  //   @Column({
-  //     type: DataType.DATE,
-  //     allowNull: false,
-  //     defaultValue: DataType.NOW,
-  //   })
-  //   createdAt: Date;
-
-  //   @Column({
-  //     type: DataType.DATE,
-  //     allowNull: false,
-  //     defaultValue: DataType.NOW,
-  //   })
-  //   updatedAt: Date;
+  declare image: string;
 }

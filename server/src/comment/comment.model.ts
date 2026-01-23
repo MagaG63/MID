@@ -25,46 +25,46 @@ export class Comment extends Model<Comment> {
     type: DataType.INTEGER,
     allowNull: false,
   })
-  forum_id: number;
+  declare forum_id: number;
 
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
   })
-  author_id: number;
+  declare author_id: number;
 
   @Column({
     type: DataType.ENUM('user', 'trainer'),
     allowNull: false,
     defaultValue: 'user',
   })
-  author_type: string;
+  declare author_type: string;
 
   @Column({
     type: DataType.TEXT,
     allowNull: false,
   })
-  content: string;
+  declare content: string;
 
   @Column({
     type: DataType.INTEGER,
     allowNull: true,
   })
-  parent_id: number;
+  declare parent_id: number;
 
   @Column({
     type: DataType.INTEGER,
     defaultValue: 0,
     allowNull: false,
   })
-  likes_count: number;
+  declare likes_count: number;
 
   @Column({
     type: DataType.ENUM('active', 'deleted', 'hidden'),
     defaultValue: 'active',
     allowNull: false,
   })
-  status: string;
+  declare status: string;
 
   @BelongsTo(() => Forum)
   forum: Forum;

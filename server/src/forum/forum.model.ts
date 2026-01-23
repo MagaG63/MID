@@ -9,37 +9,37 @@ export class Forum extends Model<Forum> {
     type: DataType.STRING,
     allowNull: false,
   })
-  title: string;
+  declare title: string;
 
   @Column({
     type: DataType.TEXT,
     allowNull: false,
   })
-  description: string;
+  declare description: string;
 
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
   })
-  author_id: number;
+  declare author_id: number;
 
   @Column({
     type: DataType.INTEGER,
     allowNull: false,
   })
-  category_id: number;
+  declare category_id: number;
 
   @Column({
     type: DataType.ENUM('active', 'closed', 'archived'),
     defaultValue: 'active',
     allowNull: false,
   })
-  status: string;
+  declare status: string;
 
   @Column({
     type: DataType.BOOLEAN,
     defaultValue: false,
     allowNull: false,
   })
-  is_pinned: boolean;
+  declare is_pinned: boolean;
 }

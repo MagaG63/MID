@@ -39,9 +39,12 @@ export class ForumController {
   @HttpCode(HttpStatus.CREATED)
   async create(@Body() createForumDto: CreateForumDto, @Req() req: any) {
     console.log('🔵 [CONTROLLER] Получен запрос на создание форума');
+    console.log('🔵 [CONTROLLER] req.user:', req.user);
     
     // Используем ID из токена как author_id
     const userId = req.user?.sub || req.user?.id;
+    
+    console.log('🔵 [CONTROLLER] Извлеченный userId:', userId);
     
     const forumData = {
       ...createForumDto,
@@ -61,7 +64,24 @@ export class ForumController {
   @HttpCode(HttpStatus.OK)
   async delete(@Param('id', ParseIntPipe) id: number, @Req() req: any) {
     const userId = req.user?.sub || req.user?.id;
+    
+    console.log('🔍 [DELETE FORUM] Данные запроса:', {
+      forumId: id,
+      userId,
+      userFromToken: req.user,
+    });
+    
     const result = await this.forumService.delete(id, userId);
     return result;
+  }
+
+  // Тестовый endpoint для проверки токена
+  @UseGuards(JwtAuthGuard)
+  @Get('test/whoami')
+  async whoami(@Req() req: any) {
+    return {
+      user: req.user,
+      userId: req.user?.sub || req.user?.id,
+    };
   }
 }

@@ -134,13 +134,20 @@ export class ForumService {
   // Удалить форум (каскадное удаление всех связанных данных)
   async delete(id: number, userId: number): Promise<{ message: string }> {
     try {
-      console.log('🔄 Удаление форума:', id);
+      console.log('🔄 Удаление форума:', { forumId: id, userId });
 
       const forum = await this.forumModel.findByPk(id);
 
       if (!forum) {
         throw new NotFoundException(`Форум с ID ${id} не найден`);
       }
+
+      console.log('📋 Данные форума:', {
+        forumId: forum.id,
+        forumAuthorId: forum.author_id,
+        userId,
+        match: forum.author_id === userId,
+      });
 
       // Проверяем, что пользователь является автором
       if (forum.author_id !== userId) {

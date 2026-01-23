@@ -21,9 +21,12 @@ if (!interceptorAdded) {
   
   // Интерцептор запросов
   axiosInstance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
-    // Логируем POST запросы
+    // Логируем POST и DELETE запросы
     if (config.method === 'post') {
       console.log('🌐 [AXIOS] POST запрос:', config.url, config.data);
+    }
+    if (config.method === 'delete') {
+      console.log('🌐 [AXIOS] DELETE запрос:', config.url);
     }
     
     // Для FormData не устанавливаем Content-Type - браузер сам сделает
@@ -36,7 +39,7 @@ if (!interceptorAdded) {
     // Добавляем токен если есть
     if (accessToken && config.headers) {
       config.headers.Authorization = `Bearer ${accessToken}`;
-      console.log('🔑 Token added to request:', config.url);
+      console.log('🔑 Token added to request:', config.url, 'Token length:', accessToken.length);
     } else {
       console.warn('⚠️ No token for request:', config.url);
     }

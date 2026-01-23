@@ -41,7 +41,7 @@ function ModalForum({ setShow, topic, show }: Props): React.JSX.Element {
 
     if (currentUser && data.trim()) {
       // Определяем тип автора
-      const authorType = user ? 'user' : 'trainer';
+      const authorType: 'user' | 'trainer' = user ? 'user' : 'trainer';
 
       const response = {
         forum_id: topic.id,
@@ -134,7 +134,7 @@ function ModalForum({ setShow, topic, show }: Props): React.JSX.Element {
               <div className="col-lg-3 col-md-6 col-6">
                 <div className="stat-card">
                   <i className="bi bi-person"></i>
-                  <span>{trainers[topic.author_id - 1].name}</span>
+                  <span>{trainers.find((t) => t.id === topic.author_id)?.name || 'Неизвестно'}</span>
                 </div>
               </div>
             </div>
